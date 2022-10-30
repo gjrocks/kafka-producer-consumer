@@ -1,0 +1,5 @@
+java -DGroupName=client3 -Daction=producer -Dbroker=1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=client3 -Daction=consumer -Dbroker=1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT
+
+java -DGroupName=client3 -Daction=consumer -Dbroker=2 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
