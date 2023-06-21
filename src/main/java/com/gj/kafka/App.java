@@ -1,108 +1,83 @@
 package com.gj.kafka;
 
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gj.kafka.constants.IKafkaConstants;
+import com.gj.kafka.consumer.CityDataConsumer;
+import com.gj.kafka.consumer.ConsumerCreator;
+import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.model.City;
+import com.gj.kafka.model.CityAggregation;
+import com.gj.kafka.producer.CityDataProducer;
+import com.gj.kafka.streams.MovieStream;
+import com.gj.kafka.streams.aggregates.Aggregation;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
-
-import com.gj.kafka.constants.IKafkaConstants;
-import com.gj.kafka.consumer.ConsumerCreator;
-import com.gj.kafka.producer.ProducerCreator;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.kstream.Consumed;
-import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.*;
+
+import java.util.List;
+import java.util.Properties;
+import java.util.concurrent.CountDownLatch;
 
 public class App {
 
-	public static List<City> loadData() {
+    public static void main(String[] args) {
 
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			List<City> asList = mapper.readValue(new File("C:\\kafka\\java-examples\\kafka\\kafka-producer-consumer\\src\\main\\resources\\city.json"), new TypeReference<List<City>>() {
-			});
-			System.out.println(asList.size());
-			return asList;
-		}catch (Exception e){e.printStackTrace();}
-		return null;
-	}
+        String grpName = System.getProperty("groupname");
+        String broker = System.getProperty("broker");
+        String topic = System.getProperty("topic");
+        String action = System.getProperty("action");
+        System.out.println("GrpName: " + grpName);
+        System.out.println("action: " + action);
+        System.out.println("broker: " + broker);
+        if (action == null || action.trim().isEmpty()) {
+            System.out.println("Please provide the action possible values are producer/consumer, returning without any processing");
+            return;
+        }
+        if (action.equalsIgnoreCase("producer")) {
+            runCityProducer(broker, topic);
+        }
+        if (action.equalsIgnoreCase("consumer")) {
+            if (topic != null && topic.equalsIgnoreCase("population")) {
+                runPolutionConsumer(grpName, broker, topic);
+            }
+
+            if (topic != null && topic.equalsIgnoreCase("city")) {
+                runCityConsumer(grpName, broker, topic);
+            }
+        }
+        if (action.equalsIgnoreCase("stream")) {
+            Aggregation.streamTotalPopulationPerState();
+        }
+        if (action.equalsIgnoreCase("moviestream")) {
+            MovieStream.movieStream();
+        }
+
+    }
+
+    static void runCityProducer(String broker, String topic) {
+        List<City> list = CityDataProducer.loadData();
+        CityDataProducer.produce(broker, topic, list.subList(0, 49));
+    }
+    static void runCityConsumer(String grpName, String broker, String topic) {
+        List<City> list = CityDataConsumer.consumeData(grpName, broker, topic);
+        list.stream().forEach(record -> {
+            System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
+        });
+
+    }
+
+    static void runPolutionConsumer(String grpName, String broker, String topic) {
+        List<CityAggregation> list =   PopulationConsumer.consumeData(grpName, broker, topic);
+        list.stream().forEach(record -> {
+           // System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
+        });
+
+    }
 
 
-	public static void main(String[] args) {
 
-		String grpName=System.getProperty("groupname");
-		String broker=System.getProperty("broker");
-		String action=System.getProperty("action");
-		System.out.println("GrpName: "+ grpName);
-		System.out.println("action: "+ action);
-		System.out.println("broker: "+ broker);
-		if(action==null || action.trim().isEmpty()){
-			System.out.println("Please provide the action possible values are producer/consumer, returning without any processing");
-			return;
-		}
-		if(action.equalsIgnoreCase("producer")) {
-			runProducer(broker);
-		}
-		if(action.equalsIgnoreCase("consumer")) {
-			runConsumer(grpName,broker);
-		}
-		//runConsumer();
-		//runConsumer(grpName2);
-	}
-
-	static void runConsumer(String grpName,String broker) {
-		Consumer<String, City> consumer = ConsumerCreator.createConsumer(grpName, broker);
-
-		int noMessageToFetch = 0;
-
-		while (true) {
-			final ConsumerRecords<String, City> consumerRecords = consumer.poll(1000);
-			if (consumerRecords.count() == 0) {
-				noMessageToFetch++;
-				if (noMessageToFetch > IKafkaConstants.MAX_NO_MESSAGE_FOUND_COUNT)
-					break;
-				else
-					continue;
-			}
-
-			consumerRecords.forEach(record -> {
-				System.out.println("Record Key " + record.key());
-				System.out.println("Record value " + record.value());
-				System.out.println("Record partition " + record.partition());
-				System.out.println("Record offset " + record.offset());
-			});
-			consumer.commitAsync();
-		}
-		consumer.close();
-	}
-
-	static void runProducer(String broker) {
-		Producer<String, City> producer = ProducerCreator.createProducer(broker);
-       List<City> list=loadData();
-
-		for (City city:list )  {
-        String key=city.getStateId()+"|"+city.getCity()+"|"+city.getId();
-			final ProducerRecord<String, City> record = new ProducerRecord<String, City>(IKafkaConstants.CITIES_TOPIC,key,city);
-			try {
-				RecordMetadata metadata = producer.send(record).get();
-				System.out.println("Record sent with key " + key + " to partition " + metadata.partition()
-						+ " with offset " + metadata.offset());
-			} catch (ExecutionException e) {
-				System.out.println("Error in sending record");
-				System.out.println(e);
-			} catch (InterruptedException e) {
-				System.out.println("Error in sending record");
-				System.out.println(e);
-			}
-		}
-	}
 }
