@@ -2,6 +2,16 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="maven-snapshot" />
+      <option name="url" value="https://snapshot.maven.deere.com" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="legacy" />
       <option name="name" value="artifactory-jdf-legacy" />
       <option name="url" value="https://repository.deere.com/artifactory/jdf-legacy" />
@@ -20,6 +30,11 @@
       <option name="id" value="snapshots" />
       <option name="name" value="artifactory-jdf-snapshot" />
       <option name="url" value="https://repository.deere.com/artifactory/jdf-snapshot" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="artifactory" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.deere.com" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />
