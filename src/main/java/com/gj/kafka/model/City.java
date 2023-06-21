@@ -252,4 +252,31 @@ public class City implements Serializable {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "City{" +
+                "city='" + city + '\'' +
+                ", cityAscii='" + cityAscii + '\'' +
+                ", stateId='" + stateId + '\'' +
+                ", stateName='" + stateName + '\'' +
+                ", countyFips=" + countyFips +
+                ", countyName='" + countyName + '\'' +
+                ", lat=" + lat +
+                ", lng=" + lng +
+                ", population=" + population +
+                ", density=" + density +
+                ", source='" + source + '\'' +
+                ", military='" + military + '\'' +
+                ", incorporated='" + incorporated + '\'' +
+                ", timezone='" + timezone + '\'' +
+                ", ranking=" + ranking +
+                ", zips='" + zips + '\'' +
+                ", id=" + id +
+                ", additionalProperties=" + additionalProperties +
+                '}';
+    }
+
+    public String getKey(){
+      return  this.getStateId()+"|"+this.getCity()+"|"+this.getId();
+    }
 }

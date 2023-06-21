@@ -22,3 +22,17 @@ java -DGroupName=city -Daction=consumer  -jar .\target\kafka-producer-consumer-0
 #Main Branch :
 
 Simple producer and consumer example for the city data. The resources folder has the csv file containing all US cities data per state.
+
+
+#StreamDemo branch
+now please send the topic name ( city/citycounter)
+
+java -DGroupName=client3 -Daction=producer -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=client3 -Daction=consumer -Dtopic=citycount -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=city -Daction=consumer -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=city -Daction=stream -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+

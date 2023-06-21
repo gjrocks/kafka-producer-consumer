@@ -1,13 +1,13 @@
 package com.gj.kafka.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gj.kafka.model.City;
 
+import com.gj.kafka.model.CityAggregation;
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-public class CitySerializer implements Serializer<City> {
+public class CityAggregateSerializer implements Serializer<CityAggregation> {
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
@@ -15,7 +15,7 @@ public class CitySerializer implements Serializer<City> {
     }
 
     @Override
-    public byte[] serialize(String topic, City data) {
+    public byte[] serialize(String topic, CityAggregation data) {
         byte[] retVal = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
