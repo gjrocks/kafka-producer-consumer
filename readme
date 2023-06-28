@@ -1,6 +1,13 @@
-java -DGroupName=client3 -Daction=producer -Dbroker=1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+#Create topic :
 
-java -DGroupName=client3 -Daction=consumer -Dbroker=1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 30 --topic cityinfo
+
+
+
+
+java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -DGroupName=client3 -Daction=consumer -Dbroker=2 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 

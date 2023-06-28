@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class CityDataConsumer {
 
-    public static List<City> consumeData(String brokers, String topic,String grpName){
+    public static List<City> consumeData(String grpName,String brokers, String topic){
 
             Consumer<String, City> consumer = ConsumerCreator.createConsumer(grpName, brokers,topic);
             List<City> list=new ArrayList<>();

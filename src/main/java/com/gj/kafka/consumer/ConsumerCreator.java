@@ -21,8 +21,8 @@ public class ConsumerCreator {
 
 	public static Consumer<String, City> createConsumer(String grpName, String broker,String topic) {
 		final Properties props = new Properties();
-		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, Util.getBroker(broker));
-		props.put(ConsumerConfig.GROUP_ID_CONFIG, (grpName!=null?grpName: IKafkaConstants.GROUP_ID_CONFIG));
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, grpName);
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CityDeserializer.class.getName());
 		props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, IKafkaConstants.MAX_POLL_RECORDS);
@@ -36,8 +36,8 @@ public class ConsumerCreator {
 
 	public static Consumer<String, CityAggregation> createCityPopulationConsumer(String grpName, String broker, String topic) {
 		final Properties props = new Properties();
-		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, Util.getBroker(broker));
-		props.put(ConsumerConfig.GROUP_ID_CONFIG, (grpName!=null?grpName: IKafkaConstants.GROUP_ID_CONFIG));
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, grpName);
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CityAggregateDeserializer.class.getName());
 		props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, IKafkaConstants.MAX_POLL_RECORDS);

@@ -30,7 +30,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "timezone",
         "ranking",
         "zips",
-        "id"
+        "id",
+        "temp"
 })
 @Generated("jsonschema2pojo")
 public class City implements Serializable {
@@ -69,6 +70,9 @@ public class City implements Serializable {
     private String zips;
     @JsonProperty("id")
     private Integer id;
+
+    @JsonProperty("temp")
+    private Integer temp;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -242,6 +246,16 @@ public class City implements Serializable {
         this.id = id;
     }
 
+    @JsonProperty("temp")
+    public Integer getTemp() {
+        return temp;
+    }
+
+    @JsonProperty("temp")
+    public void setTemp(Integer temp) {
+        this.temp = temp;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -272,6 +286,7 @@ public class City implements Serializable {
                 ", ranking=" + ranking +
                 ", zips='" + zips + '\'' +
                 ", id=" + id +
+                ", temp=" + temp +
                 ", additionalProperties=" + additionalProperties +
                 '}';
     }

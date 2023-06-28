@@ -9,6 +9,7 @@ import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.producer.CityDataProducer;
 import com.gj.kafka.streams.MovieStream;
 import com.gj.kafka.streams.aggregates.Aggregation;
+import com.gj.kafka.streams.aggregates.RecordChangesAggregation;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.common.serialization.Serde;
@@ -26,7 +27,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        String grpName = System.getProperty("groupname");
+        String grpName = System.getProperty("GroupName");
         String broker = System.getProperty("broker");
         String topic = System.getProperty("topic");
         String action = System.getProperty("action");
@@ -45,12 +46,16 @@ public class App {
                 runPolutionConsumer(grpName, broker, topic);
             }
 
-            if (topic != null && topic.equalsIgnoreCase("city")) {
+            if (topic != null && topic.equalsIgnoreCase("cityinfo")) {
                 runCityConsumer(grpName, broker, topic);
             }
         }
         if (action.equalsIgnoreCase("stream")) {
             Aggregation.streamTotalPopulationPerState();
+        }
+
+        if (action.equalsIgnoreCase("tempStream")) {
+            RecordChangesAggregation.streamTotalPopulationPerState();
         }
         if (action.equalsIgnoreCase("moviestream")) {
             MovieStream.movieStream();
@@ -60,7 +65,11 @@ public class App {
 
     static void runCityProducer(String broker, String topic) {
         List<City> list = CityDataProducer.loadData();
-        CityDataProducer.produce(broker, topic, list.subList(0, 49));
+        list.addAll(list);
+        list.addAll(list);
+        list.addAll(list);
+        System.out.println("List size: " + list.size());
+        CityDataProducer.produce(broker, topic, list);
     }
     static void runCityConsumer(String grpName, String broker, String topic) {
         List<City> list = CityDataConsumer.consumeData(grpName, broker, topic);

@@ -15,6 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 public class CityDataProducer {
 
+    static int delay=1000;
     public static List<RecordMetadata> produce(String broker, String topic, List<City> list ) {
         Producer<String, City> producer = ProducerCreator.createProducer(broker);
         List<RecordMetadata> listRecordMetadata=new ArrayList<>();
@@ -23,6 +24,11 @@ public class CityDataProducer {
             final ProducerRecord<String, City> record = new ProducerRecord<String, City>(topic,key,city);
             try {
                 RecordMetadata metadata = producer.send(record).get();
+                if(delay>0){
+                    try{
+                        Thread.sleep(1000);
+                    }catch(Exception e){e.printStackTrace();}
+                }
                 System.out.println("Record sent with key " + key + " to partition " + metadata.partition()
                         + " with offset " + metadata.offset());
                 listRecordMetadata.add(metadata);
@@ -42,7 +48,7 @@ public class CityDataProducer {
 
         try {
             ObjectMapper mapper = new ObjectMapper();
-            List<City> asList = mapper.readValue(new File("C:\\kafka\\java-examples\\kafka\\kafka-producer-consumer\\src\\main\\resources\\city.json"), new TypeReference<List<City>>() {
+            List<City> asList = mapper.readValue(new File("C:\\kafka\\java-examples\\kafka\\kafka-producer-consumer\\src\\main\\resources\\cityTemp.json"), new TypeReference<List<City>>() {
             });
             System.out.println(asList.size());
             return asList;
