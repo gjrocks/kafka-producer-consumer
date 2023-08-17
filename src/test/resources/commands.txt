@@ -1,0 +1,23 @@
+kafka-avro-console-producer  --broker-list kafka-broker-1:9092 --topic datacouch-product  --property schema.registry.url=http://schema-registry:8081 --property value.schema='{"type":"record","name":"product","fields":[{"name":"prodid","type":"string"},{"name":"prodName","type":"string"},{"name":"price","type":"string"}]}'
+
+kafka-topics — create --bootstrap-server kafka-broker-1:9092 — replication-factor 1 — partitions 1 — topic datacouch-product
+
+kafka-topics — create --bootstrap-server localhost:9092 — replication-factor 1 — partitions 1 — topic datacouch-product
+
+{"prodid": "Sominex-Herbal-30-tablets","prodName":"Sominex_Herbal","price":"3.39"}
+
+{"prodid": "Fitbit-Surge-Fitness-Super-Watch-Black-Small","prodName":"Fitbit_Surge_Fitness","price":"157.99"}
+
+curl -X GET http://schema-registry:8081/subjects
+
+kafka-avro-console-consumer --topic datacouch-product  --bootstrap-server kafka-broker-1:9092  --property schema.registry.url=http://schema-registry:8081 --from-beginning
+
+wrong entry in producer
+
+{"prod": "Express-Nails-Polished-Mushroom","prodName":"Express Nails Polished Mushroom","price":"7.99"}
+
+
+Let’s Evolve Schema
+kafka-avro-console-producer --broker-list kafka-broker-1:9092 --topic datacouch-product --property schema.registry.url=http://schema-registry:8081 --property value.schema='{"type":"record","name":"product","fields":[{"name":"prod","type":"string","aliases":["prodid"]},{"name":"prodName","type":"string"},{"name":"price","type":"string"}]}'
+
+{"prod": "Express-Nails-Polished-Mushroom","prodName":"Express Nails Polished Mushroom","price":"7.99"}
