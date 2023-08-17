@@ -1,14 +1,16 @@
 #Create topic :
 
-kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 30 --topic cityinfo
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic cityinfo
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic cityinfo
+kafka-console-consumer --topic cityinfo --from-beginning --bootstrap-server localhost:9092
 
 
+java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=citys3 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=city -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=populationaggregation -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
-java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
-
-java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
-
+kafka-console-consumer.bat --topic populationaggregation --from-beginning --bootstrap-server localhost:9092,localhost:9093
 java -DGroupName=client3 -Daction=consumer -Dbroker=2 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 #Run the application in the producer mode.
@@ -40,6 +42,32 @@ java -DGroupName=client3 -Daction=consumer -Dtopic=citycount -jar .\target\kafka
 
 java -DGroupName=city -Daction=consumer -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
-java -DGroupName=city -Daction=stream -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -DGroupName=city -Daction=tempStream -Dtopic=cityinfo  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 
+# Stream filter demo
+refer the data from cityTemp.json, cityid are used as topic names.
+Create following topics.
+refer poc.doc for for setting up the kafka cluster and zookeeper.
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 3 --topic cityinfo
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 3 --topic 1840034016
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 3 --topic 1840020491
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 3 --topic 1840000494
+
+#send the city data to the cityinfo topic
+java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+#Start stream
+
+java -DGroupName=city -Dbroker=localhost:9092,localhost:9093 -Daction=filteringSteam -Dtopic=cityinfo  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=city -Dbroker=localhost:9092,localhost:9093 -Daction=populationaggregation -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+#consumers
+
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=1840034016 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=1840020491 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=1840000494 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+#
+java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar

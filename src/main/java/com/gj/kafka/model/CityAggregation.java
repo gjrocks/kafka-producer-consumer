@@ -4,6 +4,7 @@ public class CityAggregation {
 
     Long population;
 
+
     public CityAggregation(Long population) {
         this.population = population;
     }

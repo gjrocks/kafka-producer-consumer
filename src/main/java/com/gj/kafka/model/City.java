@@ -31,7 +31,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "ranking",
         "zips",
         "id",
-        "temp"
+        "temp",
+        "duplicate"
 })
 @Generated("jsonschema2pojo")
 public class City implements Serializable {
@@ -73,6 +74,9 @@ public class City implements Serializable {
 
     @JsonProperty("temp")
     private Integer temp;
+
+    @JsonProperty("duplicate")
+    private Integer duplicate;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -256,6 +260,17 @@ public class City implements Serializable {
         this.temp = temp;
     }
 
+
+    @JsonProperty("duplicate")
+    public Integer getDuplicate() {
+        return duplicate;
+    }
+
+    @JsonProperty("duplicate")
+    public void setDuplicate(Integer duplicate) {
+        this.duplicate = duplicate;
+    }
+
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
@@ -287,6 +302,7 @@ public class City implements Serializable {
                 ", zips='" + zips + '\'' +
                 ", id=" + id +
                 ", temp=" + temp +
+                ", duplicate=" + duplicate +//
                 ", additionalProperties=" + additionalProperties +
                 '}';
     }

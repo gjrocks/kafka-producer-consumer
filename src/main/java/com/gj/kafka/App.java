@@ -1,31 +1,28 @@
 package com.gj.kafka;
 
-import com.gj.kafka.constants.IKafkaConstants;
 import com.gj.kafka.consumer.CityDataConsumer;
-import com.gj.kafka.consumer.ConsumerCreator;
 import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.producer.CityDataProducer;
 import com.gj.kafka.streams.MovieStream;
 import com.gj.kafka.streams.aggregates.Aggregation;
+import com.gj.kafka.streams.aggregates.FilteringSteam;
+import com.gj.kafka.streams.aggregates.PopulationAggregationStream;
 import com.gj.kafka.streams.aggregates.RecordChangesAggregation;
-import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.common.serialization.Serde;
-import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.*;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.CountDownLatch;
 
-public class App {
-
+@SpringBootApplication
+public class App implements CommandLineRunner {
     public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+    @Override
+    public void run(String... args) throws Exception{
 
         String grpName = System.getProperty("GroupName");
         String broker = System.getProperty("broker");
@@ -49,6 +46,16 @@ public class App {
             if (topic != null && topic.equalsIgnoreCase("cityinfo")) {
                 runCityConsumer(grpName, broker, topic);
             }
+
+            if (topic != null && topic.equalsIgnoreCase("1840034016")) {
+                runCityConsumer(grpName, broker, topic);
+            }
+            if (topic != null && topic.equalsIgnoreCase("1840020491")) {
+                runCityConsumer(grpName, broker, topic);
+            }
+            if (topic != null && topic.equalsIgnoreCase("1840000494")) {
+                runCityConsumer(grpName, broker, topic);
+            }
         }
         if (action.equalsIgnoreCase("stream")) {
             Aggregation.streamTotalPopulationPerState();
@@ -57,20 +64,34 @@ public class App {
         if (action.equalsIgnoreCase("tempStream")) {
             RecordChangesAggregation.streamTotalPopulationPerState();
         }
+
+        if (action.equalsIgnoreCase("filteringSteam")) {
+            FilteringSteam.filterAndSendToTopic(broker);
+        }
         if (action.equalsIgnoreCase("moviestream")) {
             MovieStream.movieStream();
         }
 
+        if (action.equalsIgnoreCase("populationaggregation")) {
+            PopulationAggregationStream.cityPopulationAggregation();
+        }
     }
 
     static void runCityProducer(String broker, String topic) {
         List<City> list = CityDataProducer.loadData();
-        list.addAll(list);
-        list.addAll(list);
-        list.addAll(list);
+
+        // list.addAll(list);
+        //  list.addAll(list);
+        // list.addAll(list);
         System.out.println("List size: " + list.size());
+
+        list.stream().forEach(city -> {
+                    System.out.println("City Name :" + city.getCity() + " Message Order: " + city.getRanking() + "Temp :" + city.getTemp());
+                }
+        );
         CityDataProducer.produce(broker, topic, list);
     }
+
     static void runCityConsumer(String grpName, String broker, String topic) {
         List<City> list = CityDataConsumer.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
@@ -80,9 +101,9 @@ public class App {
     }
 
     static void runPolutionConsumer(String grpName, String broker, String topic) {
-        List<CityAggregation> list =   PopulationConsumer.consumeData(grpName, broker, topic);
+        List<CityAggregation> list = PopulationConsumer.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
-           // System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
+            // System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
         });
 
     }

@@ -17,6 +17,11 @@
       <option name="url" value="https://repository.deere.com/artifactory/jdf-legacy" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="spring-milestones" />
+      <option name="name" value="Spring Milestones" />
+      <option name="url" value="https://repo.spring.io/milestone" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />
@@ -30,6 +35,11 @@
       <option name="id" value="snapshots" />
       <option name="name" value="artifactory-jdf-snapshot" />
       <option name="url" value="https://repository.deere.com/artifactory/jdf-snapshot" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="spring-snapshots" />
+      <option name="name" value="Spring Snapshots" />
+      <option name="url" value="https://repo.spring.io/snapshot" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="artifactory" />
