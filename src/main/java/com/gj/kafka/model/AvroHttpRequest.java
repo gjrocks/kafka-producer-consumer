@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.gj.model;
+package com.gj.kafka.model;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -7622501761129602839L;
+  private static final long serialVersionUID = -7268271878018639712L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.gj.model\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[]},{\"name\":\"active\",\"type\":{\"type\":\"enum\",\"name\":\"Active\",\"symbols\":[\"YES\",\"NO\"]}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.gj.kafka.model\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":[]},{\"name\":\"active\",\"type\":{\"type\":\"enum\",\"name\":\"Active\",\"symbols\":[\"YES\",\"NO\"]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -74,9 +74,9 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   }
 
   private long requestTime;
-  private com.gj.model.ClientIdentifier clientIdentifier;
+  private com.gj.kafka.model.ClientIdentifier clientIdentifier;
   private java.util.List<java.lang.CharSequence> employeeNames;
-  private com.gj.model.Active active;
+  private com.gj.kafka.model.Active active;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -92,7 +92,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param employeeNames The new value for employeeNames
    * @param active The new value for active
    */
-  public AvroHttpRequest(java.lang.Long requestTime, com.gj.model.ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, com.gj.model.Active active) {
+  public AvroHttpRequest(java.lang.Long requestTime, com.gj.kafka.model.ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, com.gj.kafka.model.Active active) {
     this.requestTime = requestTime;
     this.clientIdentifier = clientIdentifier;
     this.employeeNames = employeeNames;
@@ -123,9 +123,9 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: requestTime = (java.lang.Long)value$; break;
-    case 1: clientIdentifier = (com.gj.model.ClientIdentifier)value$; break;
+    case 1: clientIdentifier = (com.gj.kafka.model.ClientIdentifier)value$; break;
     case 2: employeeNames = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 3: active = (com.gj.model.Active)value$; break;
+    case 3: active = (com.gj.kafka.model.Active)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -151,7 +151,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'clientIdentifier' field.
    * @return The value of the 'clientIdentifier' field.
    */
-  public com.gj.model.ClientIdentifier getClientIdentifier() {
+  public com.gj.kafka.model.ClientIdentifier getClientIdentifier() {
     return clientIdentifier;
   }
 
@@ -160,7 +160,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'clientIdentifier' field.
    * @param value the value to set.
    */
-  public void setClientIdentifier(com.gj.model.ClientIdentifier value) {
+  public void setClientIdentifier(com.gj.kafka.model.ClientIdentifier value) {
     this.clientIdentifier = value;
   }
 
@@ -185,7 +185,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'active' field.
    * @return The value of the 'active' field.
    */
-  public com.gj.model.Active getActive() {
+  public com.gj.kafka.model.Active getActive() {
     return active;
   }
 
@@ -194,7 +194,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'active' field.
    * @param value the value to set.
    */
-  public void setActive(com.gj.model.Active value) {
+  public void setActive(com.gj.kafka.model.Active value) {
     this.active = value;
   }
 
@@ -202,8 +202,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Creates a new AvroHttpRequest RecordBuilder.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.gj.model.AvroHttpRequest.Builder newBuilder() {
-    return new com.gj.model.AvroHttpRequest.Builder();
+  public static com.gj.kafka.model.AvroHttpRequest.Builder newBuilder() {
+    return new com.gj.kafka.model.AvroHttpRequest.Builder();
   }
 
   /**
@@ -211,11 +211,11 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing builder to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.gj.model.AvroHttpRequest.Builder newBuilder(com.gj.model.AvroHttpRequest.Builder other) {
+  public static com.gj.kafka.model.AvroHttpRequest.Builder newBuilder(com.gj.kafka.model.AvroHttpRequest.Builder other) {
     if (other == null) {
-      return new com.gj.model.AvroHttpRequest.Builder();
+      return new com.gj.kafka.model.AvroHttpRequest.Builder();
     } else {
-      return new com.gj.model.AvroHttpRequest.Builder(other);
+      return new com.gj.kafka.model.AvroHttpRequest.Builder(other);
     }
   }
 
@@ -224,11 +224,11 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing instance to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static com.gj.model.AvroHttpRequest.Builder newBuilder(com.gj.model.AvroHttpRequest other) {
+  public static com.gj.kafka.model.AvroHttpRequest.Builder newBuilder(com.gj.kafka.model.AvroHttpRequest other) {
     if (other == null) {
-      return new com.gj.model.AvroHttpRequest.Builder();
+      return new com.gj.kafka.model.AvroHttpRequest.Builder();
     } else {
-      return new com.gj.model.AvroHttpRequest.Builder(other);
+      return new com.gj.kafka.model.AvroHttpRequest.Builder(other);
     }
   }
 
@@ -240,10 +240,10 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     implements org.apache.avro.data.RecordBuilder<AvroHttpRequest> {
 
     private long requestTime;
-    private com.gj.model.ClientIdentifier clientIdentifier;
-    private com.gj.model.ClientIdentifier.Builder clientIdentifierBuilder;
+    private com.gj.kafka.model.ClientIdentifier clientIdentifier;
+    private com.gj.kafka.model.ClientIdentifier.Builder clientIdentifierBuilder;
     private java.util.List<java.lang.CharSequence> employeeNames;
-    private com.gj.model.Active active;
+    private com.gj.kafka.model.Active active;
 
     /** Creates a new Builder */
     private Builder() {
@@ -254,7 +254,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.gj.model.AvroHttpRequest.Builder other) {
+    private Builder(com.gj.kafka.model.AvroHttpRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
@@ -265,7 +265,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (other.hasClientIdentifierBuilder()) {
-        this.clientIdentifierBuilder = com.gj.model.ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
+        this.clientIdentifierBuilder = com.gj.kafka.model.ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
       }
       if (isValidValue(fields()[2], other.employeeNames)) {
         this.employeeNames = data().deepCopy(fields()[2].schema(), other.employeeNames);
@@ -281,7 +281,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing AvroHttpRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.gj.model.AvroHttpRequest other) {
+    private Builder(com.gj.kafka.model.AvroHttpRequest other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
@@ -316,7 +316,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'requestTime'.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder setRequestTime(long value) {
+    public com.gj.kafka.model.AvroHttpRequest.Builder setRequestTime(long value) {
       validate(fields()[0], value);
       this.requestTime = value;
       fieldSetFlags()[0] = true;
@@ -336,7 +336,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'requestTime' field.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder clearRequestTime() {
+    public com.gj.kafka.model.AvroHttpRequest.Builder clearRequestTime() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -345,7 +345,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'clientIdentifier' field.
       * @return The value.
       */
-    public com.gj.model.ClientIdentifier getClientIdentifier() {
+    public com.gj.kafka.model.ClientIdentifier getClientIdentifier() {
       return clientIdentifier;
     }
 
@@ -355,7 +355,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'clientIdentifier'.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder setClientIdentifier(com.gj.model.ClientIdentifier value) {
+    public com.gj.kafka.model.AvroHttpRequest.Builder setClientIdentifier(com.gj.kafka.model.ClientIdentifier value) {
       validate(fields()[1], value);
       this.clientIdentifierBuilder = null;
       this.clientIdentifier = value;
@@ -375,12 +375,12 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Gets the Builder instance for the 'clientIdentifier' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.gj.model.ClientIdentifier.Builder getClientIdentifierBuilder() {
+    public com.gj.kafka.model.ClientIdentifier.Builder getClientIdentifierBuilder() {
       if (clientIdentifierBuilder == null) {
         if (hasClientIdentifier()) {
-          setClientIdentifierBuilder(com.gj.model.ClientIdentifier.newBuilder(clientIdentifier));
+          setClientIdentifierBuilder(com.gj.kafka.model.ClientIdentifier.newBuilder(clientIdentifier));
         } else {
-          setClientIdentifierBuilder(com.gj.model.ClientIdentifier.newBuilder());
+          setClientIdentifierBuilder(com.gj.kafka.model.ClientIdentifier.newBuilder());
         }
       }
       return clientIdentifierBuilder;
@@ -392,7 +392,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * @return This builder.
      */
 
-    public com.gj.model.AvroHttpRequest.Builder setClientIdentifierBuilder(com.gj.model.ClientIdentifier.Builder value) {
+    public com.gj.kafka.model.AvroHttpRequest.Builder setClientIdentifierBuilder(com.gj.kafka.model.ClientIdentifier.Builder value) {
       clearClientIdentifier();
       clientIdentifierBuilder = value;
       return this;
@@ -410,7 +410,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'clientIdentifier' field.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder clearClientIdentifier() {
+    public com.gj.kafka.model.AvroHttpRequest.Builder clearClientIdentifier() {
       clientIdentifier = null;
       clientIdentifierBuilder = null;
       fieldSetFlags()[1] = false;
@@ -431,7 +431,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'employeeNames'.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
+    public com.gj.kafka.model.AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
       validate(fields()[2], value);
       this.employeeNames = value;
       fieldSetFlags()[2] = true;
@@ -451,7 +451,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'employeeNames' field.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder clearEmployeeNames() {
+    public com.gj.kafka.model.AvroHttpRequest.Builder clearEmployeeNames() {
       employeeNames = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -461,7 +461,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'active' field.
       * @return The value.
       */
-    public com.gj.model.Active getActive() {
+    public com.gj.kafka.model.Active getActive() {
       return active;
     }
 
@@ -471,7 +471,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'active'.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder setActive(com.gj.model.Active value) {
+    public com.gj.kafka.model.AvroHttpRequest.Builder setActive(com.gj.kafka.model.Active value) {
       validate(fields()[3], value);
       this.active = value;
       fieldSetFlags()[3] = true;
@@ -491,7 +491,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'active' field.
       * @return This builder.
       */
-    public com.gj.model.AvroHttpRequest.Builder clearActive() {
+    public com.gj.kafka.model.AvroHttpRequest.Builder clearActive() {
       active = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -511,10 +511,10 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
             throw e;
           }
         } else {
-          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (com.gj.model.ClientIdentifier) defaultValue(fields()[1]);
+          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (com.gj.kafka.model.ClientIdentifier) defaultValue(fields()[1]);
         }
         record.employeeNames = fieldSetFlags()[2] ? this.employeeNames : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[2]);
-        record.active = fieldSetFlags()[3] ? this.active : (com.gj.model.Active) defaultValue(fields()[3]);
+        record.active = fieldSetFlags()[3] ? this.active : (com.gj.kafka.model.Active) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -576,7 +576,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       this.requestTime = in.readLong();
 
       if (this.clientIdentifier == null) {
-        this.clientIdentifier = new com.gj.model.ClientIdentifier();
+        this.clientIdentifier = new com.gj.kafka.model.ClientIdentifier();
       }
       this.clientIdentifier.customDecode(in);
 
@@ -595,7 +595,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         }
       }
 
-      this.active = com.gj.model.Active.values()[in.readEnum()];
+      this.active = com.gj.kafka.model.Active.values()[in.readEnum()];
 
     } else {
       for (int i = 0; i < 4; i++) {
@@ -606,7 +606,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
 
         case 1:
           if (this.clientIdentifier == null) {
-            this.clientIdentifier = new com.gj.model.ClientIdentifier();
+            this.clientIdentifier = new com.gj.kafka.model.ClientIdentifier();
           }
           this.clientIdentifier.customDecode(in);
           break;
@@ -629,7 +629,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
           break;
 
         case 3:
-          this.active = com.gj.model.Active.values()[in.readEnum()];
+          this.active = com.gj.kafka.model.Active.values()[in.readEnum()];
           break;
 
         default:

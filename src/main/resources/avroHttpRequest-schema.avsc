@@ -1,7 +1,7 @@
 {
   "type":"record",
   "name":"AvroHttpRequest",
-  "namespace":"com.gj.model",
+  "namespace":"com.gj.kafka.model",
   "fields":[
     {
       "name":"requestTime",

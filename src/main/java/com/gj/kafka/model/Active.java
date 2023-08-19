@@ -3,11 +3,11 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.gj.model;
+package com.gj.kafka.model;
 @org.apache.avro.specific.AvroGenerated
 public enum Active implements org.apache.avro.generic.GenericEnumSymbol<Active> {
   YES, NO  ;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Active\",\"namespace\":\"com.gj.model\",\"symbols\":[\"YES\",\"NO\"]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"enum\",\"name\":\"Active\",\"namespace\":\"com.gj.kafka.model\",\"symbols\":[\"YES\",\"NO\"]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   @Override

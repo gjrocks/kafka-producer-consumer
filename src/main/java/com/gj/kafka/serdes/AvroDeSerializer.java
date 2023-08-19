@@ -1,6 +1,6 @@
-package com.gj.serde;
+package com.gj.kafka.serdes;
 
-import com.gj.model.AvroHttpRequest;
+import com.gj.kafka.model.AvroHttpRequest;
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.Decoder;

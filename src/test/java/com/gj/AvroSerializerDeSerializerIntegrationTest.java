@@ -1,10 +1,10 @@
 package com.gj;
 
-import com.gj.model.Active;
-import com.gj.model.AvroHttpRequest;
-import com.gj.model.ClientIdentifier;
-import com.gj.serde.AvroDeSerializer;
-import com.gj.serde.AvroSerializer;
+import com.gj.kafka.model.Active;
+import com.gj.kafka.model.AvroHttpRequest;
+import com.gj.kafka.model.ClientIdentifier;
+import com.gj.kafka.serdes.AvroDeSerializer;
+import com.gj.kafka.serdes.AvroSerializer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

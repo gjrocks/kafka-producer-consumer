@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.gj.model;
+package com.gj.kafka.model;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8759437390804643530L;
+  private static final long serialVersionUID = 485826441208218713L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"namespace\":\"com.gj.model\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"namespace\":\"com.gj.kafka.model\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -158,8 +158,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * Creates a new ClientIdentifier RecordBuilder.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.gj.model.ClientIdentifier.Builder newBuilder() {
-    return new com.gj.model.ClientIdentifier.Builder();
+  public static com.gj.kafka.model.ClientIdentifier.Builder newBuilder() {
+    return new com.gj.kafka.model.ClientIdentifier.Builder();
   }
 
   /**
@@ -167,11 +167,11 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing builder to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.gj.model.ClientIdentifier.Builder newBuilder(com.gj.model.ClientIdentifier.Builder other) {
+  public static com.gj.kafka.model.ClientIdentifier.Builder newBuilder(com.gj.kafka.model.ClientIdentifier.Builder other) {
     if (other == null) {
-      return new com.gj.model.ClientIdentifier.Builder();
+      return new com.gj.kafka.model.ClientIdentifier.Builder();
     } else {
-      return new com.gj.model.ClientIdentifier.Builder(other);
+      return new com.gj.kafka.model.ClientIdentifier.Builder(other);
     }
   }
 
@@ -180,11 +180,11 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing instance to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static com.gj.model.ClientIdentifier.Builder newBuilder(com.gj.model.ClientIdentifier other) {
+  public static com.gj.kafka.model.ClientIdentifier.Builder newBuilder(com.gj.kafka.model.ClientIdentifier other) {
     if (other == null) {
-      return new com.gj.model.ClientIdentifier.Builder();
+      return new com.gj.kafka.model.ClientIdentifier.Builder();
     } else {
-      return new com.gj.model.ClientIdentifier.Builder(other);
+      return new com.gj.kafka.model.ClientIdentifier.Builder(other);
     }
   }
 
@@ -207,7 +207,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.gj.model.ClientIdentifier.Builder other) {
+    private Builder(com.gj.kafka.model.ClientIdentifier.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
@@ -223,7 +223,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing ClientIdentifier instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.gj.model.ClientIdentifier other) {
+    private Builder(com.gj.kafka.model.ClientIdentifier other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
@@ -249,7 +249,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'hostName'.
       * @return This builder.
       */
-    public com.gj.model.ClientIdentifier.Builder setHostName(java.lang.CharSequence value) {
+    public com.gj.kafka.model.ClientIdentifier.Builder setHostName(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.hostName = value;
       fieldSetFlags()[0] = true;
@@ -269,7 +269,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'hostName' field.
       * @return This builder.
       */
-    public com.gj.model.ClientIdentifier.Builder clearHostName() {
+    public com.gj.kafka.model.ClientIdentifier.Builder clearHostName() {
       hostName = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -289,7 +289,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * @param value The value of 'ipAddress'.
       * @return This builder.
       */
-    public com.gj.model.ClientIdentifier.Builder setIpAddress(java.lang.CharSequence value) {
+    public com.gj.kafka.model.ClientIdentifier.Builder setIpAddress(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.ipAddress = value;
       fieldSetFlags()[1] = true;
@@ -309,7 +309,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'ipAddress' field.
       * @return This builder.
       */
-    public com.gj.model.ClientIdentifier.Builder clearIpAddress() {
+    public com.gj.kafka.model.ClientIdentifier.Builder clearIpAddress() {
       ipAddress = null;
       fieldSetFlags()[1] = false;
       return this;
