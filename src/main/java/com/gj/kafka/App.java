@@ -91,7 +91,6 @@ public class App implements CommandLineRunner {
                 .setFName("Raj")
                 .setLName("Jones")
                 .setPhoneNumber("99933232")
-                .setEmpId("1")
                 .build();
         list.add(bob);
         EmployeeDataProducer.produce(broker, topic, list);
