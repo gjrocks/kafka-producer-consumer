@@ -88,9 +88,10 @@ public class App implements CommandLineRunner {
     private void runEmployeeProducer(String broker, String topic) {
         List<Employee> list=new ArrayList<>();
         Employee bob = Employee.newBuilder().setAge(35)
-                .setFName("Bob")
+                .setFName("Raj")
                 .setLName("Jones")
-                .setPhoneNumber("12345")
+                .setPhoneNumber("99933232")
+                .setEmpId("1")
                 .build();
         list.add(bob);
         EmployeeDataProducer.produce(broker, topic, list);

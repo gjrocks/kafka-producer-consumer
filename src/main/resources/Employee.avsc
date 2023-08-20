@@ -19,6 +19,11 @@
     {
       "name": "phoneNumber",
       "type": "string"
+    },
+    {
+      "name": "empId",
+      "type": "string",
+      "default": ""
     }
   ]
 }
