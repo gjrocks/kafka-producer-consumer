@@ -41,9 +41,6 @@ public class EmployeeDataProducer {
             } catch (InterruptedException e) {
                 System.out.println("Error in sending record");
                 System.out.println(e);
-            }finally {
-                producer.close();
-                producer.flush();
             }
         }
         return listRecordMetadata;
