@@ -1,10 +1,13 @@
 package com.gj.kafka;
 
 import com.gj.kafka.consumer.CityDataConsumer;
+import com.gj.kafka.consumer.EmployeeDataConsumer;
 import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
+import com.gj.kafka.model.Employee;
 import com.gj.kafka.producer.CityDataProducer;
+import com.gj.kafka.producer.EmployeeDataProducer;
 import com.gj.kafka.streams.MovieStream;
 import com.gj.kafka.streams.aggregates.Aggregation;
 import com.gj.kafka.streams.aggregates.FilteringSteam;
@@ -14,6 +17,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -36,9 +40,13 @@ public class App implements CommandLineRunner {
             return;
         }
         if (action.equalsIgnoreCase("producer")) {
-            runCityProducer(broker, topic);
+          //  runCityProducer(broker, topic);
+            runEmployeeProducer(broker,topic);
         }
         if (action.equalsIgnoreCase("consumer")) {
+            if (topic != null && topic.equalsIgnoreCase("employee")) {
+                runEmployeeConsumer(grpName, broker, topic);
+            }
             if (topic != null && topic.equalsIgnoreCase("population")) {
                 runPolutionConsumer(grpName, broker, topic);
             }
@@ -77,6 +85,17 @@ public class App implements CommandLineRunner {
         }
     }
 
+    private void runEmployeeProducer(String broker, String topic) {
+        List<Employee> list=new ArrayList<>();
+        Employee bob = Employee.newBuilder().setAge(35)
+                .setFName("Bob")
+                .setLName("Jones")
+                .setPhoneNumber("12345")
+                .build();
+        list.add(bob);
+        EmployeeDataProducer.produce(broker, topic, list);
+    }
+
     static void runCityProducer(String broker, String topic) {
         List<City> list = CityDataProducer.loadData();
 
@@ -90,6 +109,14 @@ public class App implements CommandLineRunner {
                 }
         );
         CityDataProducer.produce(broker, topic, list);
+    }
+
+    static void runEmployeeConsumer(String grpName, String broker, String topic) {
+        List<Employee> list = EmployeeDataConsumer.consumeData(grpName, broker, topic);
+        list.stream().forEach(record -> {
+            System.out.println("Key :" + record.getFName() + " Value :" + record.toString());
+        });
+
     }
 
     static void runCityConsumer(String grpName, String broker, String topic) {

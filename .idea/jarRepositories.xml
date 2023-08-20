@@ -56,5 +56,10 @@
       <option name="name" value="artifactory-jdf-release" />
       <option name="url" value="https://repository.deere.com/artifactory/jdf-release" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="confluent" />
+      <option name="name" value="confluent" />
+      <option name="url" value="https://packages.confluent.io/maven/" />
+    </remote-repository>
   </component>
 </project>

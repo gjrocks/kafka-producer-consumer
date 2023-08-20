@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "Employee",
+  "namespace": "com.gj.kafka.model",
+  "fields": [
+    {
+      "name": "fName",
+      "type": "string"
+    },
+    {
+      "name": "lName",
+      "type": "string"
+    },
+    {
+      "name": "age",
+      "type": "int",
+      "default": 0
+    },
+    {
+      "name": "phoneNumber",
+      "type": "string"
+    }
+  ]
+}

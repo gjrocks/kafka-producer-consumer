@@ -82,3 +82,10 @@ java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -
 java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 
+#schema registry
+docker exec -it my_container sh
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic employee
+
+java -Daction=producer -Dbroker=localhost:19092 -Dtopic=employee -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=employeeConsumerGrp -Daction=consumer -Dbroker=localhost:19092 -Dtopic=employee -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
