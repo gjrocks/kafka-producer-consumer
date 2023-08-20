@@ -47,6 +47,9 @@ public class App implements CommandLineRunner {
             if (topic != null && topic.equalsIgnoreCase("employee")) {
                 runEmployeeConsumer(grpName, broker, topic);
             }
+            if (topic != null && topic.equalsIgnoreCase("employee1")) {
+                runEmployeeConsumer(grpName, broker, topic);
+            }
             if (topic != null && topic.equalsIgnoreCase("population")) {
                 runPolutionConsumer(grpName, broker, topic);
             }
