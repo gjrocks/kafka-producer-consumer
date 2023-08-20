@@ -90,9 +90,21 @@ public class App implements CommandLineRunner {
         Employee bob = Employee.newBuilder().setAge(35)
                 .setFName("Raj")
                 .setLName("Jones")
-                .setPhoneNumber("99933232")
+                .setPhoneNumber("version-1")
+                .build();
+        Employee knb = Employee.newBuilder().setAge(35)
+                .setFName("knb")
+                .setLName("Jones")
+                .setPhoneNumber("version-1")
+                .build();
+        Employee dnb = Employee.newBuilder().setAge(35)
+                .setFName("dnb")
+                .setLName("Jones")
+                .setPhoneNumber("version-1")
                 .build();
         list.add(bob);
+        list.add(knb);
+        list.add(dnb);
         EmployeeDataProducer.produce(broker, topic, list);
     }
 
