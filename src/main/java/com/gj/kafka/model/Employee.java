@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Employee extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3075715584313187749L;
+  private static final long serialVersionUID = -8886891987384425703L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Employee\",\"namespace\":\"com.gj.kafka.model\",\"fields\":[{\"name\":\"fName\",\"type\":\"string\"},{\"name\":\"lName\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\",\"default\":0},{\"name\":\"phoneNumber\",\"type\":\"string\"},{\"name\":\"empId\",\"type\":\"string\",\"default\":\"\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Employee\",\"namespace\":\"com.gj.kafka.model\",\"fields\":[{\"name\":\"fName\",\"type\":\"string\"},{\"name\":\"lName\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\",\"default\":0},{\"name\":\"phoneNumber\",\"type\":\"int\",\"default\":0},{\"name\":\"empId\",\"type\":\"string\",\"default\":\"\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -76,7 +76,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
   private java.lang.CharSequence fName;
   private java.lang.CharSequence lName;
   private int age;
-  private java.lang.CharSequence phoneNumber;
+  private int phoneNumber;
   private java.lang.CharSequence empId;
 
   /**
@@ -94,7 +94,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
    * @param phoneNumber The new value for phoneNumber
    * @param empId The new value for empId
    */
-  public Employee(java.lang.CharSequence fName, java.lang.CharSequence lName, java.lang.Integer age, java.lang.CharSequence phoneNumber, java.lang.CharSequence empId) {
+  public Employee(java.lang.CharSequence fName, java.lang.CharSequence lName, java.lang.Integer age, java.lang.Integer phoneNumber, java.lang.CharSequence empId) {
     this.fName = fName;
     this.lName = lName;
     this.age = age;
@@ -129,7 +129,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: fName = (java.lang.CharSequence)value$; break;
     case 1: lName = (java.lang.CharSequence)value$; break;
     case 2: age = (java.lang.Integer)value$; break;
-    case 3: phoneNumber = (java.lang.CharSequence)value$; break;
+    case 3: phoneNumber = (java.lang.Integer)value$; break;
     case 4: empId = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
@@ -190,7 +190,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'phoneNumber' field.
    * @return The value of the 'phoneNumber' field.
    */
-  public java.lang.CharSequence getPhoneNumber() {
+  public int getPhoneNumber() {
     return phoneNumber;
   }
 
@@ -199,7 +199,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'phoneNumber' field.
    * @param value the value to set.
    */
-  public void setPhoneNumber(java.lang.CharSequence value) {
+  public void setPhoneNumber(int value) {
     this.phoneNumber = value;
   }
 
@@ -264,7 +264,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
     private java.lang.CharSequence fName;
     private java.lang.CharSequence lName;
     private int age;
-    private java.lang.CharSequence phoneNumber;
+    private int phoneNumber;
     private java.lang.CharSequence empId;
 
     /** Creates a new Builder */
@@ -451,7 +451,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'phoneNumber' field.
       * @return The value.
       */
-    public java.lang.CharSequence getPhoneNumber() {
+    public int getPhoneNumber() {
       return phoneNumber;
     }
 
@@ -461,7 +461,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'phoneNumber'.
       * @return This builder.
       */
-    public com.gj.kafka.model.Employee.Builder setPhoneNumber(java.lang.CharSequence value) {
+    public com.gj.kafka.model.Employee.Builder setPhoneNumber(int value) {
       validate(fields()[3], value);
       this.phoneNumber = value;
       fieldSetFlags()[3] = true;
@@ -482,7 +482,6 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.gj.kafka.model.Employee.Builder clearPhoneNumber() {
-      phoneNumber = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -535,7 +534,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
         record.fName = fieldSetFlags()[0] ? this.fName : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.lName = fieldSetFlags()[1] ? this.lName : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.age = fieldSetFlags()[2] ? this.age : (java.lang.Integer) defaultValue(fields()[2]);
-        record.phoneNumber = fieldSetFlags()[3] ? this.phoneNumber : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.phoneNumber = fieldSetFlags()[3] ? this.phoneNumber : (java.lang.Integer) defaultValue(fields()[3]);
         record.empId = fieldSetFlags()[4] ? this.empId : (java.lang.CharSequence) defaultValue(fields()[4]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
@@ -575,7 +574,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
 
     out.writeInt(this.age);
 
-    out.writeString(this.phoneNumber);
+    out.writeInt(this.phoneNumber);
 
     out.writeString(this.empId);
 
@@ -592,7 +591,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
 
       this.age = in.readInt();
 
-      this.phoneNumber = in.readString(this.phoneNumber instanceof Utf8 ? (Utf8)this.phoneNumber : null);
+      this.phoneNumber = in.readInt();
 
       this.empId = in.readString(this.empId instanceof Utf8 ? (Utf8)this.empId : null);
 
@@ -612,7 +611,7 @@ public class Employee extends org.apache.avro.specific.SpecificRecordBase implem
           break;
 
         case 3:
-          this.phoneNumber = in.readString(this.phoneNumber instanceof Utf8 ? (Utf8)this.phoneNumber : null);
+          this.phoneNumber = in.readInt();
           break;
 
         case 4:

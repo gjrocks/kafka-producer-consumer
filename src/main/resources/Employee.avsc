@@ -18,7 +18,8 @@
     },
     {
       "name": "phoneNumber",
-      "type": "string"
+      "type": "int",
+      "default": 0
     },
     {
       "name": "empId",
