@@ -47,6 +47,9 @@ public class App implements CommandLineRunner {
             if (topic != null && topic.equalsIgnoreCase("employee")) {
                 runEmployeeConsumer(grpName, broker, topic);
             }
+            if (topic != null && topic.equalsIgnoreCase("employee1")) {
+                runEmployeeConsumer(grpName, broker, topic);
+            }
             if (topic != null && topic.equalsIgnoreCase("population")) {
                 runPolutionConsumer(grpName, broker, topic);
             }
@@ -91,19 +94,19 @@ public class App implements CommandLineRunner {
                 .setFName("Raj")
                 .setLName("Jones")
                 .setPhoneNumber(1)
-                .setEmpId("1")
+                .setEmpId("1-Version-3")
                 .build();
         Employee kevin = Employee.newBuilder().setAge(35)
                 .setFName("Keven")
                 .setLName("Jones")
                 .setPhoneNumber(2)
-                .setEmpId("2")
+                .setEmpId("2-Version-3")
                 .build();
         Employee george = Employee.newBuilder().setAge(35)
                 .setFName("George")
                 .setLName("Jones")
                 .setPhoneNumber(3)
-                .setEmpId("3")
+                .setEmpId("3-Version-3")
                 .build();
         list.add(bob);
         list.add(george);
@@ -129,7 +132,10 @@ public class App implements CommandLineRunner {
     static void runEmployeeConsumer(String grpName, String broker, String topic) {
         List<Employee> list = EmployeeDataConsumer.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
+            if(record!=null)
             System.out.println("Key :" + record.getFName() + " Value :" + record.toString());
+            else
+                System.out.println("Record itself is null");
         });
 
     }

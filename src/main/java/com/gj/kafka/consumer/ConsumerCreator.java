@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import com.gj.kafka.deserializer.CityAggregateDeserializer;
 import com.gj.kafka.deserializer.CityDeserializer;
+import com.gj.kafka.deserializer.CustomAvroDeserilizer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.model.Employee;
@@ -42,7 +43,7 @@ public class ConsumerCreator {
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, grpName);
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CustomAvroDeserilizer.class.getName());
 		props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, IKafkaConstants.MAX_POLL_RECORDS);
 		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
 		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, IKafkaConstants.OFFSET_RESET_EARLIER);

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class EmployeeDataConsumer {
 
     public static List<Employee> consumeData(String grpName,String brokers, String topic){
-        io.confluent.kafka.serializers.AbstractKafkaAvroDeserializer f=null;
+
             Consumer<String, Employee> consumer = ConsumerCreator.createEmployeeConsumer(grpName, brokers,topic);
             List<Employee> list=new ArrayList<>();
             int noMessageToFetch = 0;
@@ -28,6 +28,7 @@ public class EmployeeDataConsumer {
                 }
 
                 consumerRecords.forEach(record -> {
+                    if(record!=null)
                     list.add(record.value());
                 });
 
