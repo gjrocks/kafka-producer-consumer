@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.Employee;
+import io.confluent.kafka.serializers.subject.RecordNameStrategy;
+import io.confluent.kafka.serializers.subject.TopicNameStrategy;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -18,6 +20,7 @@ public class EmployeeDataProducer {
     static int delay=1000;
     public static List<RecordMetadata> produce(String broker, String topic, List<Employee> list ) {
         Producer<String, Employee> producer = ProducerCreator.createEmployeeProducer(broker);
+        RecordNameStrategy t=null;
         List<RecordMetadata> listRecordMetadata=new ArrayList<>();
         System.out.println("Ganesh here");
         for (Employee employee:list) {

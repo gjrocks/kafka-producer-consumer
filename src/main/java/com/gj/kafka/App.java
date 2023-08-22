@@ -2,6 +2,7 @@ package com.gj.kafka;
 
 import com.gj.kafka.consumer.CityDataConsumer;
 import com.gj.kafka.consumer.EmployeeDataConsumer;
+import com.gj.kafka.consumer.GenericAvroDataConsumer;
 import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
@@ -13,6 +14,8 @@ import com.gj.kafka.streams.aggregates.Aggregation;
 import com.gj.kafka.streams.aggregates.FilteringSteam;
 import com.gj.kafka.streams.aggregates.PopulationAggregationStream;
 import com.gj.kafka.streams.aggregates.RecordChangesAggregation;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -48,7 +51,7 @@ public class App implements CommandLineRunner {
                 runEmployeeConsumer(grpName, broker, topic);
             }
             if (topic != null && topic.equalsIgnoreCase("employee1")) {
-                runEmployeeConsumer(grpName, broker, topic);
+                runGenericDataConsumer(grpName, broker, topic);
             }
             if (topic != null && topic.equalsIgnoreCase("population")) {
                 runPolutionConsumer(grpName, broker, topic);
@@ -139,7 +142,16 @@ public class App implements CommandLineRunner {
         });
 
     }
+    static void runGenericDataConsumer(String grpName, String broker, String topic) {
+        List<GenericRecord> list = GenericAvroDataConsumer.consumeData(grpName, broker, topic);
+        list.stream().forEach(record -> {
+            if(record!=null)
+                System.out.println("Value :" + record.toString());
+            else
+                System.out.println("Record itself is null");
+        });
 
+    }
     static void runCityConsumer(String grpName, String broker, String topic) {
         List<City> list = CityDataConsumer.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
