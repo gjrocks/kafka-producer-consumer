@@ -1,14 +1,12 @@
 package com.gj.kafka;
 
-import com.gj.kafka.consumer.CityDataConsumer;
-import com.gj.kafka.consumer.EmployeeDataConsumer;
-import com.gj.kafka.consumer.GenericAvroDataConsumer;
-import com.gj.kafka.consumer.PopulationConsumer;
+import com.gj.kafka.consumer.*;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.model.Employee;
 import com.gj.kafka.producer.CityDataProducer;
 import com.gj.kafka.producer.EmployeeDataProducer;
+import com.gj.kafka.producer.EmployeeDataProducerRecordNameStrategy;
 import com.gj.kafka.streams.MovieStream;
 import com.gj.kafka.streams.aggregates.Aggregation;
 import com.gj.kafka.streams.aggregates.FilteringSteam;
@@ -52,6 +50,9 @@ public class App implements CommandLineRunner {
             }
             if (topic != null && topic.equalsIgnoreCase("employee1")) {
                 runGenericDataConsumer(grpName, broker, topic);
+            }
+            if (topic != null && topic.equalsIgnoreCase("employee2")) {
+                runGenericDataConsumerWithRecordNameStrategry(grpName, broker, topic);
             }
             if (topic != null && topic.equalsIgnoreCase("population")) {
                 runPolutionConsumer(grpName, broker, topic);
@@ -114,7 +115,7 @@ public class App implements CommandLineRunner {
         list.add(bob);
         list.add(george);
         list.add(kevin);
-        EmployeeDataProducer.produce(broker, topic, list);
+        EmployeeDataProducerRecordNameStrategy.produce(broker, topic, list);
     }
 
     static void runCityProducer(String broker, String topic) {
@@ -144,6 +145,19 @@ public class App implements CommandLineRunner {
     }
     static void runGenericDataConsumer(String grpName, String broker, String topic) {
         List<GenericRecord> list = GenericAvroDataConsumer.consumeData(grpName, broker, topic);
+        list.stream().forEach(record -> {
+            if(record!=null)
+                System.out.println("Value :" + record.toString());
+            else
+                System.out.println("Record itself is null");
+        });
+
+    }
+
+
+    static void runGenericDataConsumerWithRecordNameStrategry(String grpName, String broker, String topic) {
+        System.out.println("runGenericDataConsumerWithRecordNameStrategry");
+        List<GenericRecord> list = GenericAvroDataConsumerRecordNameStrategy.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
             if(record!=null)
                 System.out.println("Value :" + record.toString());
