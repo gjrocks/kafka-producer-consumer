@@ -29,6 +29,7 @@ public class GenericAvroDataConsumerRecordNameStrategy {
                 }
 
                 consumerRecords.forEach(record -> {
+
                     if(record!=null)
                     list.add(record.value());
                     else

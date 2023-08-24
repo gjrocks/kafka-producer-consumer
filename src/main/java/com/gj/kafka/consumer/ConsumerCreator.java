@@ -15,6 +15,8 @@ import com.gj.kafka.util.Util;
 import com.gj.kafka.constants.IKafkaConstants;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
+import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
+import io.confluent.kafka.serializers.subject.RecordNameStrategy;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -34,7 +36,10 @@ public class ConsumerCreator {
 		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
 		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, IKafkaConstants.OFFSET_RESET_EARLIER);
 		props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, "false");
-		props.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG,"http://localhost:8081"); //<----- Run Schema Registry on 8081
+		props.put(KafkaAvroDeserializerConfig.SCHEMA_REGISTRY_URL_CONFIG,"http://localhost:8081");
+		//<----- Run Schema Registry on 8081
+		props.put(KafkaAvroDeserializerConfig.VALUE_SUBJECT_NAME_STRATEGY, RecordNameStrategy.class.getName());
+		props.put(KafkaAvroDeserializerConfig.KEY_SUBJECT_NAME_STRATEGY,RecordNameStrategy.class.getName());
 		final Consumer<String, GenericRecord> consumer = new KafkaConsumer<>(props);
 		consumer.subscribe(Collections.singletonList(topic));
 		return consumer;

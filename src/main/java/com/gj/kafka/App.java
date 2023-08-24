@@ -97,20 +97,20 @@ public class App implements CommandLineRunner {
         Employee bob = Employee.newBuilder().setAge(35)
                 .setFName("Raj")
                 .setLName("Jones")
-                .setPhoneNumber(1)
-                .setEmpId("1-Version-3")
+                .setPhoneNumber(1+"")
+                .setEmpId("RecordName-Version-2")
                 .build();
         Employee kevin = Employee.newBuilder().setAge(35)
                 .setFName("Keven")
                 .setLName("Jones")
-                .setPhoneNumber(2)
-                .setEmpId("2-Version-3")
+                .setPhoneNumber(2+"")
+                .setEmpId("RecordName-Version-2")
                 .build();
         Employee george = Employee.newBuilder().setAge(35)
                 .setFName("George")
                 .setLName("Jones")
-                .setPhoneNumber(3)
-                .setEmpId("3-Version-3")
+                .setPhoneNumber(3+"")
+                .setEmpId("RecordName-Version-2")
                 .build();
         list.add(bob);
         list.add(george);
