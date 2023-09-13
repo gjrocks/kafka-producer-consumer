@@ -112,8 +112,11 @@ public class App implements CommandLineRunner {
                 .setPhoneNumber(3+"")
                 .setEmpId("RecordName-Version-2")
                 .build();
+        Employee john = Employee.newBuilder().setAge(35).setEmpId("RecordName-version-2").build();
+        Employee  jane = Employee.newBuilder().setAge(35).setEmpId("RecordName-version-2").build();
         list.add(bob);
         list.add(george);
+        list.add(john);
         list.add(kevin);
         EmployeeDataProducerRecordNameStrategy.produce(broker, topic, list);
     }
@@ -177,6 +180,7 @@ public class App implements CommandLineRunner {
     static void runPolutionConsumer(String grpName, String broker, String topic) {
         List<CityAggregation> list = PopulationConsumer.consumeData(grpName, broker, topic);
         list.stream().forEach(record -> {
+            System.out.println("Key :" + record + " Value :" + record.toString());
             // System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
         });
 
