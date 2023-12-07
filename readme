@@ -4,6 +4,10 @@ kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor
 kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic cityinfo
 kafka-console-consumer --topic cityinfo --from-beginning --bootstrap-server localhost:9092
 
+kafka-console-consumer --topic cityinfo --from-beginning --bootstrap-server localhost:9092 --group admin-group --consumer.config C:/kafka_2.13-3.3.1/config/admin.properties
+
+set KAFKA_OPTS=-Djava.security.auth.login.config=C:/kafka_2.13-3.3.1/config/jaas-kafka-server.conf
+
 
 java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=citys3 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=city -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
@@ -82,3 +86,7 @@ java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -
 java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 
+kafka-console-producer --bootstrap-server localhost:9092 --topic test --producer.config C:\kafka_2.13-3.3.1\config\admin.properties
+
+kafka-console-producer --bootstrap-server kafka-broker-1:9092 --topic test --producer.config /opt/kafka/config/admin.properties
+kafka-console-consumer --topic test --from-beginning --bootstrap-server kafka-broker-1:9092 --consumer.config /opt/kafka/config/admin.properties
