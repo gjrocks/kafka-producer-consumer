@@ -5,9 +5,9 @@ kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor
 
 
 
-java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=city  -javaagent:C:\prometheus-2.48.1.windows-amd64\lib\jmx_prometheus_javaagent-0.18.0.jar=1234:C:\prometheus-2.48.1.windows-amd64\lib\kafka-producer.yml -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
-java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=city -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -DGroupName=client3 -Daction=consumer -Dbroker=2 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
@@ -38,7 +38,7 @@ java -DGroupName=client3 -Daction=producer -jar .\target\kafka-producer-consumer
 
 java -DGroupName=client3 -Daction=consumer -Dtopic=citycount -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
-java -DGroupName=city -Daction=consumer -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -DGroupName=cityt -Daction=consumer -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -DGroupName=city -Daction=stream -Dtopic=city  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
