@@ -81,7 +81,7 @@ java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo -jar .\target\ka
 access the kafka bin/windows folder and use the following command to create a topic.
 kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 2 --topic cityinfo
 # producer
-java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=producer -Dbroker=localhost:19092,localhost:29092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 #consumer
 java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
