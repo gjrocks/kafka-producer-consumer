@@ -17,6 +17,7 @@ public class CityDataProducer {
 
     static int delay=1000;
     public static List<RecordMetadata> produce(String broker, String topic, List<City> list ) {
+        System.out.println("City Producers");
         Producer<String, City> producer = ProducerCreator.createProducer(broker);
         List<RecordMetadata> listRecordMetadata=new ArrayList<>();
         for (City city:list) {
@@ -34,10 +35,10 @@ public class CityDataProducer {
                 listRecordMetadata.add(metadata);
             } catch (ExecutionException e) {
                 System.out.println("Error in sending record");
-                System.out.println(e);
+               e.printStackTrace();
             } catch (InterruptedException e) {
                 System.out.println("Error in sending record");
-                System.out.println(e);
+                e.printStackTrace();
             }
         }
         return listRecordMetadata;
