@@ -1,0 +1,4 @@
+In Kafka Streams, the earliest timestamp across all partitions is chosen first for processing, and Kafka Streams uses the TimeStampExtractor interface to get the timestamp from the current record.
+check this assumption with multiple partitions.
+
+

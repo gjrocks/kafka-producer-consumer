@@ -96,7 +96,8 @@ public class FilteringSteam {
                            ks.to("1840000494");
                        }))
                .branch(
-                       (key, city) -> city.getId()==1840034016,
+                       (key, city) -> {
+                           System.out.println("I am here"); return city.getId()==1840034016;},
                        Branched.withConsumer(ks -> {
                            System.out.println("going to 1840034016");
                            ks.to("1840034016");
@@ -171,5 +172,40 @@ public class FilteringSteam {
    }
 
 
+    public static void doFilter(final String brokers) throws InterruptedException {
+        //filter kafka stream data
+       final Serde<String> stringSerde = Serdes.String();
+       final Serde<Long> longSerde = Serdes.Long();
+       HashMap<String, City> internalStore = new HashMap<>();
+       final StreamsBuilder builder = new StreamsBuilder();
+
+       KStream<String, City> views = builder.stream(
+               "cityinfo",  Consumed.with(stringSerde, CustomSerdesFactory.citySerde()));
+
+       views.filter((s, city) -> city.getId()==1840020491).foreach((k, v) -> {//do nothing terminating operator
+            });
+        final Properties props = new Properties();
+        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "streams-totalviews5");
+        props.putIfAbsent(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS_ALL);
+        Topology topology = builder.build();
+        System.out.println("topology :" + topology.describe());
+        final KafkaStreams streams = new KafkaStreams(topology, props);
+
+        final CountDownLatch latch = new CountDownLatch(1);
+
+        try {
+            streams.start();
+            latch.await();}catch (Exception e){}
+        Runtime.getRuntime().addShutdownHook(new Thread("streams-totalviews") {
+            @Override
+                public void run() {
+                   streams.close();
+                latch.countDown();
+                System.out.println("Stream Complete");
+                System.exit(0);
+            }
+        });
+
+    }
 
 }

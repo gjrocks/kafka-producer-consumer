@@ -153,6 +153,7 @@ public class RecordChangesAggregation {
 
         ktable.toStream().to("population", Produced.with(Serdes.String(), CustomSerdesFactory.cityAggregationSerde()));//print(Printed.<String, CityAggregation>toSysOut().withLabel("City Population Aggregate"));*/
         /** working onw **/
+        //views.map((y,u)->{ return null;}).foreach();
         KTable<String, Long> totalViews = views
                 .mapValues(v -> {
                     System.out.println("Printing v" + v);

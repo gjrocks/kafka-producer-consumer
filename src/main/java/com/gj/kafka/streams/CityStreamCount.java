@@ -25,6 +25,7 @@ public class CityStreamCount {
         );
         //views.print(Printed.toSysOut());
         System.out.println("Views: " + views);
+
         final KTable<String, Long> counts = views.map((key, value) -> {
                     System.out.println("Got here :" + key);
                     return new KeyValue<String, String>(value.getStateId(), value.getCity());

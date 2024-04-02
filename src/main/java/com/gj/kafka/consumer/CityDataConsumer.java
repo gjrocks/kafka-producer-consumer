@@ -19,6 +19,8 @@ public class CityDataConsumer {
 
             while (true) {
                 final ConsumerRecords<String, City> consumerRecords = consumer.poll(1000);
+
+
                 if (consumerRecords.count() == 0) {
                     noMessageToFetch++;
                     if (noMessageToFetch > IKafkaConstants.MAX_NO_MESSAGE_FOUND_COUNT)

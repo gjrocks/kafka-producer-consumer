@@ -82,6 +82,9 @@ access the kafka bin/windows folder and use the following command to create a to
 kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 2 --partitions 2 --topic cityinfo
 # producer
 java -Daction=producer -Dbroker=localhost:19092,localhost:29092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 #consumer
 java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:9092,localhost:9093 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
@@ -90,3 +93,29 @@ kafka-console-producer --bootstrap-server localhost:9092 --topic test --producer
 
 kafka-console-producer --bootstrap-server kafka-broker-1:9092 --topic test --producer.config /opt/kafka/config/admin.properties
 kafka-console-consumer --topic test --from-beginning --bootstrap-server kafka-broker-1:9092 --consumer.config /opt/kafka/config/admin.properties
+
+
+
+java -Daction=producer -Dbroker=localhost:19092,localhost:29092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -javaagent:C:/kafka/java-examples/kafka/kafka-producer-consumer/newrelic/newrelic.jar -Dnewrelic.config.file=C:/kafka/java-examples/kafka/kafka-producer-consumer/newrelic/newrelic.yml -Dnewrelic.config.application_logging.enabled=true -Dnewrelic.config.application_logging.forwarding.enabled=true -Dkafka.metrics.as_events.enabled=true -Dnewrelic.config.application_logging.forwarding.max_samples_stored=10000 -Dnewrelic.config.application_logging.local_decorating.enabled=false -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo   -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+-javaagent:C:/kafka/java-examples/kafka/kafka-producer-consumer/newrelic/newrelic.jar -Dnewrelic.config.file=C:/kafka/java-examples/kafka/kafka-producer-consumer/newrelic/newrelic.yml -Dnewrelic.config.application_logging.enabled=true -Dnewrelic.config.application_logging.forwarding.enabled=true -Dkafka.metrics.as_events.enabled=true -Dnewrelic.config.application_logging.forwarding.max_samples_stored=10000 -Dnewrelic.config.application_logging.local_decorating.enabled=false
+
+
+kafka_server_brokertopicmetrics_count{instance="localhost:27071", job="kafka", name="MessagesInPerSec", topic="cityinfo"}
+
+
+kafka_server_brokertopicmetrics_count{instance="localhost:27071", job="kafka", name="BytesInPerSec", topic="cityinfo"}
+
+
+kafka-run-class.bat kafka.admin.ConsumerGroupCommand      --bootstrap-server localhost:29092     --describe --all-groups
+
+kafka-run-class.bat kafka.tools.GetOffsetShell --broker-list localhost:19092,localhost:29092,localhost:39092,localhost:49092 --topic cityinfo
+
+
+java -Daction=producer -Dbroker=localhost:19092,localhost:29092,localhost:3909
+2,localhost:49092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:19092,localhost:29092,localhost:39092,localhost:49092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar

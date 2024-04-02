@@ -18,6 +18,7 @@ public class CityDataProducer {
     static int delay=1000;
     public static List<RecordMetadata> produce(String broker, String topic, List<City> list ) {
         System.out.println("City Producers");
+        //Producer<String, City> producer = ProducerCreator.createProducerSSL_SASL(broker);
         Producer<String, City> producer = ProducerCreator.createProducer(broker);
         List<RecordMetadata> listRecordMetadata=new ArrayList<>();
         for (City city:list) {
