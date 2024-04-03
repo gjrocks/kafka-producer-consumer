@@ -2,7 +2,9 @@ package com.gj.kafka.streams.aggregates;
 
 import com.gj.kafka.constants.IKafkaConstants;
 import com.gj.kafka.model.City;
+import com.gj.kafka.producer.CityDataProducer;
 import com.gj.kafka.serdes.CustomSerdesFactory;
+import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -13,7 +15,9 @@ import org.apache.kafka.streams.kstream.Branched;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
 
@@ -141,6 +145,7 @@ public class FilteringSteam {
                "cityinfo",
                Consumed.with(stringSerde, CustomSerdesFactory.citySerde())
        );
+
        views.filter(new CityPredicate(brokers)).foreach((k, v) -> {//do nothing terminating operator
        });
        final Properties props = new Properties();
@@ -205,6 +210,57 @@ public class FilteringSteam {
                 System.exit(0);
             }
         });
+
+    }
+
+
+    public static void processAndSendToDynamicTopic(final String brokers) {
+        final Serde<String> stringSerde = Serdes.String();
+        final Serde<Long> longSerde = Serdes.Long();
+
+        HashMap<String, City> internalStore = new HashMap<>();
+
+        final StreamsBuilder builder = new StreamsBuilder();
+
+        KStream<String, City> views = builder.stream(
+                "cityinfo",
+                Consumed.with(stringSerde, CustomSerdesFactory.citySerde())
+        );
+
+        views.foreach((key, city) -> {//do nothing terminating operator
+            List<City> li=new ArrayList<>();
+            li.add(city);
+            List<RecordMetadata> mi= CityDataProducer.produce(brokers,city.getStateId(), li);
+            mi.forEach(record->{
+                System.out.println("Record sent to :" + record.topic() + "with key :" + city.getKey());
+            });
+
+        });
+        final Properties props = new Properties();
+        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "processAndSendToDynamicTopic");
+        props.putIfAbsent(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS_ALL);
+        Topology topology = builder.build();
+        System.out.println("topology :" + topology.describe());
+        final KafkaStreams streams = new KafkaStreams(topology, props);
+
+        final CountDownLatch latch = new CountDownLatch(1);
+
+        try {
+            streams.start();
+            latch.await();
+        } catch (final Throwable e) {
+            System.exit(1);
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread("streams-totalviews") {
+            @Override
+            public void run() {
+                streams.close();
+                latch.countDown();
+            }
+        });
+        System.out.println("Stream Complete");
+        System.exit(0);
 
     }
 
