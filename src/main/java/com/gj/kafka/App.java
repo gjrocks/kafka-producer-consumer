@@ -66,7 +66,7 @@ public class App implements CommandLineRunner {
         }
 
         if (action.equalsIgnoreCase("filteringSteam")) {
-            FilteringSteam.filterAndSendToTopic(broker);
+            FilteringSteam.processAndSendToDynamicTopic(broker);
         }
         if (action.equalsIgnoreCase("moviestream")) {
             MovieStream.movieStream();
