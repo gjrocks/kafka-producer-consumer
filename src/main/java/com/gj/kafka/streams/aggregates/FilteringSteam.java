@@ -228,9 +228,16 @@ public class FilteringSteam {
         );
 
         views.foreach((key, city) -> {//do nothing terminating operator
+            //write a custom logi to derive ur topic name
             List<City> li=new ArrayList<>();
             li.add(city);
+            //state
             List<RecordMetadata> mi= CityDataProducer.produce(brokers,city.getStateId(), li);
+            //cityid
+
+             // logical topic name
+
+
             mi.forEach(record->{
                 System.out.println("Record sent to :" + record.topic() + "with key :" + city.getKey());
             });
@@ -264,4 +271,81 @@ public class FilteringSteam {
 
     }
 
+
+    public static void filterAndSendToTopic_withBranching_dynamicTopicNameExtraction(final String brokers) {
+        final Serde<String> stringSerde = Serdes.String();
+        final Serde<Long> longSerde = Serdes.Long();
+
+        HashMap<String, City> internalStore = new HashMap<>();
+
+        final StreamsBuilder builder = new StreamsBuilder();
+
+        KStream<String, City> views = builder.stream(
+                "cityinfo",
+                Consumed.with(stringSerde, CustomSerdesFactory.citySerde())
+        );
+
+
+        views.split()
+                .branch(
+                        (key, city) -> city.getStateId().equalsIgnoreCase("CA"),
+                        Branched.withConsumer(ks -> {
+                            System.out.println("Record for the state CA");
+                            //ks.to("1840020491");
+                            ks.to((key, city, recordContext) ->{
+                                //write your own logic here to get topic name
+
+                                return city.getCity().replaceAll(" ","_").toLowerCase();});
+                        }))
+                .branch(
+                        (key, city) -> city.getStateId().equalsIgnoreCase("NY"),
+                        Branched.withConsumer(ks -> {
+                            System.out.println("Record for the state NY");
+                            //ks.to("1840000494");
+
+                            ks.to((key, city, recordContext) ->{
+                                //write your own logic here to get topic name
+
+                                return city.getCity().replaceAll(" ","_").toLowerCase();});
+
+                        }))
+                .branch(
+                        (key, city) -> {
+                            return city.getStateId().equalsIgnoreCase("IL");},
+                        Branched.withConsumer(ks -> {
+                            System.out.println("Record for the state IL");
+                           // ks.to("allcities");
+
+                            ks.to((key, city, recordContext) ->{
+                                //write your own logic here to get topic name
+
+                                return city.getCity().replaceAll(" ","_").toLowerCase();});
+                        }));
+        final Properties props = new Properties();
+        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "filterAndSendToTopic_withBranching_dynamicTopicNameExtraction");
+        props.putIfAbsent(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS_ALL);
+        Topology topology = builder.build();
+        System.out.println("topology :" + topology.describe());
+        final KafkaStreams streams = new KafkaStreams(topology, props);
+
+        final CountDownLatch latch = new CountDownLatch(1);
+
+        try {
+            streams.start();
+            latch.await();
+        } catch (final Throwable e) {
+            System.exit(1);
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread("filterAndSendToTopic_withBranching_dynamicTopicNameExtraction") {
+            @Override
+            public void run() {
+                streams.close();
+                latch.countDown();
+            }
+        });
+        System.out.println("filterAndSendToTopic_withBranching_dynamicTopicNameExtraction Complete");
+        System.exit(0);
+
+    }
 }
