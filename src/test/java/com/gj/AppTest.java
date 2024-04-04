@@ -78,5 +78,9 @@ public class AppTest
         }*/
         assertTrue( true );
 
+            String city="Los Angles";
+      String newName=  city.replaceAll(" ","_").toLowerCase();
+        System.out.println(newName);
+
     }
 }

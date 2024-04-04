@@ -70,7 +70,7 @@ public class App implements CommandLineRunner {
         }
 
         if (action.equalsIgnoreCase("filteringSteam2")) {
-            FilteringSteam.filterAndSendToTopic_withBranching_dynamicTopicNameExtraction(broker);
+            FilteringSteam.processAndSendToDynamicTopic_flatmap(broker);
         }
         if (action.equalsIgnoreCase("moviestream")) {
             MovieStream.movieStream();
