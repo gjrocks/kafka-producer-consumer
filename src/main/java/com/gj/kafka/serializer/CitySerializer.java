@@ -2,7 +2,6 @@ package com.gj.kafka.serializer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gj.kafka.model.City;
-
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
@@ -16,6 +15,7 @@ public class CitySerializer implements Serializer<City> {
 
     @Override
     public byte[] serialize(String topic, City data) {
+
         byte[] retVal = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try {

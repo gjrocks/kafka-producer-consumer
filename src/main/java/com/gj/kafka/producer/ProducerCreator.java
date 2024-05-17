@@ -77,6 +77,8 @@ public class ProducerCreator {
 		ssl.endpoint.identification.algorithm=
 ;
 				security.protocol=SSL*/
+
+
 		return new KafkaProducer<>(props);
 	}
 
