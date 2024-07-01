@@ -1,0 +1,43 @@
+final KStreamBuilder builder = new KStreamBuilder();
+		KStream<GenericRecord, GenericRecord> txnStream = builder.stream(txnTopic);
+
+		KStream<String, GenericRecord> keyedtxnStream =
+				txnStream.selectKey(new KeyValueMapper<GenericRecord, GenericRecord, String>() {
+
+					@Override
+					public String apply(GenericRecord key, GenericRecord value) {
+
+						String newkey = value.get("TAG_ID").toString() + "_" + value.get("PLAZA_ID").toString();
+						return newkey;
+					}
+				});
+
+
+		TimeWindows tw = TimeWindows.of(window_size);
+		Windows<TimeWindow> ww = tw.until(2 * window_size);
+		KGroupedStream<String, GenericRecord> groupedStream = keyedtxnStream.groupByKey(stringSerdeKey, valueAvroSerde);
+
+		KTable<Windowed<String>, ArrayList<GenericRecord>> listTableStream = groupedStream.aggregate(new Initializer<ArrayList<GenericRecord>>() {
+				@Override
+				public ArrayList<GenericRecord> apply() {
+					return new ArrayList<GenericRecord>();
+				}
+			} ,
+		   new Aggregator() {
+			@Override
+			public Object apply(Object aggKey, Object value, Object aggregate) {
+				ArrayList<GenericRecord> list = (ArrayList<GenericRecord>)aggregate;
+				GenericRecord v = (GenericRecord)value;
+				list.add((GenericRecord) value);
+				logger.debug("aggkey==="+aggKey);
+				logger.debug("list==="+list);
+				return list;
+			}}
+		, ww, aggValueSerde, storename);
+
+		KStream<Windowed<String>, ArrayList<GenericRecord>> liststream =  listTableStream.toStream();
+
+		liststream.map((key, value) -> new KeyValue<>(populate(schema, value.get(0), null), populateArray(schemaArray, schema, value))).to(txnIntTopic);
+
+		final KafkaStreams streams = new KafkaStreams(builder, streamsConfiguration);
+		streams.start();

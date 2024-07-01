@@ -125,4 +125,16 @@ java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:19092,loca
 
 java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
+java -Daction=rssiproducer -Dbroker=localhost:9092 -Dtopic=rssi -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
 java -DGroupName=filteringSteam -Daction=filteringSteam -Dbroker=localhost:9092 -Dtopic=cityinfo  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=rssistream -Daction=rssistream -Dbroker=localhost:9092 -Dtopic=rssi  -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -DGroupName=rssiConsumerGrp -Daction=consumer -Dbroker=localhost:9092 -Dtopic=rssi -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+java -Daction=beaconconsumer -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=beacons -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -Daction=beaconstream -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=beacons -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+

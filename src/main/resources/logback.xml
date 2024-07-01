@@ -17,7 +17,7 @@
         <appender-ref ref="FILE" />
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <!-- ASYNC is one of the main appenders -->
         <appender-ref ref="ASYNC" />
 

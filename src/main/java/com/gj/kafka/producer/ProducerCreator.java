@@ -50,7 +50,7 @@ public class ProducerCreator {
 	}
 
 	public static Producer<String, City> createProducerSSL_SASL(String broker) {
-
+//Serdes.
 		Properties props = new Properties();
 		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
 		props.put(ProducerConfig.CLIENT_ID_CONFIG, IKafkaConstants.CLIENT_ID);

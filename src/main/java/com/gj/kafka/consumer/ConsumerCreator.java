@@ -5,8 +5,10 @@ import java.util.Properties;
 
 import com.gj.kafka.deserializer.CityAggregateDeserializer;
 import com.gj.kafka.deserializer.CityDeserializer;
+import com.gj.kafka.deserializer.RSSIDeserializer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
+import com.gj.kafka.model.RSSI;
 import com.gj.kafka.serializer.CityAggregateSerializer;
 import com.gj.kafka.serializer.CitySerializer;
 import com.gj.kafka.util.Util;
@@ -34,6 +36,20 @@ public class ConsumerCreator {
 		return consumer;
 	}
 
+	public static Consumer<String, RSSI> createRSSIConsumer(String grpName, String broker, String topic) {
+		final Properties props = new Properties();
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, grpName);
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, RSSIDeserializer.class.getName());
+		props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, IKafkaConstants.MAX_POLL_RECORDS);
+		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "false");
+		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, IKafkaConstants.OFFSET_RESET_EARLIER);
+
+		final Consumer<String, RSSI> consumer = new KafkaConsumer<>(props);
+		consumer.subscribe(Collections.singletonList(topic));
+		return consumer;
+	}
 	public static Consumer<String, CityAggregation> createCityPopulationConsumer(String grpName, String broker, String topic) {
 		final Properties props = new Properties();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, broker);
