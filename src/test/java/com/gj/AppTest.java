@@ -137,7 +137,7 @@ public class AppTest
                         cycleTimeEvent.setDeviceName(deviceName);
 
                         JsonNode existingTags=existingNode.get("tags").get("ProgramName");
-                        JsonNode existingProgramName=existingTags.get("tagValue");
+                         JsonNode existingProgramName=existingTags.get("tagValue");
                         JsonNode existingTime=existingTags.get("timestamp");
                         cycleTimeEvent.setPreviousProgramStartTime(existingTime.asLong());
                         cycleTimeEvent.setPreviousProgramName(existingProgramName.asText());
