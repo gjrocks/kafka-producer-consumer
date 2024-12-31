@@ -123,7 +123,7 @@ java -DGroupName=cityConsumerGrp -Daction=consumer -Dbroker=localhost:19092,loca
 
 # latest
 
-java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=producer -Dbroker=localhost:19092,localhost:29092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -Daction=rssiproducer -Dbroker=localhost:9092 -Dtopic=rssi -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
@@ -138,3 +138,10 @@ java -Daction=beaconconsumer -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtop
 
 java -Daction=beaconstream -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=beacons -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
+//-Daction=beaconstream -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=beacons
+
+java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -Daction=cityFilteringStream -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -Daction=consumer -DGroupName=cityconsumer -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar

@@ -478,4 +478,44 @@ public class FilteringSteam {
 
     }
 
+
+    public static void filterByCityName(final String brokers,final String topic,final String cityName) throws InterruptedException {
+        //filter kafka stream data
+        final Serde<String> stringSerde = Serdes.String();
+        final Serde<Long> longSerde = Serdes.Long();
+        HashMap<String, City> internalStore = new HashMap<>();
+        final StreamsBuilder builder = new StreamsBuilder();
+        System.out.println("Brokers: " +brokers +" topic: " + topic +"cityName: " +cityName);
+        KStream<String, City> views = builder.stream(
+                topic,  Consumed.with(stringSerde, CustomSerdesFactory.citySerde()));
+
+        views.filter((s, city) -> city.getCity().equalsIgnoreCase(cityName)).foreach((k, v) -> {
+
+            System.out.println("Key: " +k + "Value: " + v);
+
+        });
+        final Properties props = new Properties();
+        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "streams-totalviews5");
+        props.putIfAbsent(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS_ALL);
+        Topology topology = builder.build();
+        System.out.println("topology :" + topology.describe());
+        final KafkaStreams streams = new KafkaStreams(topology, props);
+
+        final CountDownLatch latch = new CountDownLatch(1);
+
+        try {
+            streams.start();
+            latch.await();}catch (Exception e){}
+        Runtime.getRuntime().addShutdownHook(new Thread("streams-totalviews") {
+            @Override
+            public void run() {
+                streams.close();
+                latch.countDown();
+                System.out.println("Stream Complete");
+                System.exit(0);
+            }
+        });
+
+    }
+
 }

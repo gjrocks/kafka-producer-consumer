@@ -20,6 +20,7 @@ public class CityDataProducer {
         System.out.println("City Producers");
         //Producer<String, City> producer = ProducerCreator.createProducerSSL_SASL(broker);
        Producer<String, City> producer = ProducerCreator.createProducer(broker);
+       // Producer<String, City> producer = ProducerCreator.createProducerSSL_SASLOAUTH2(broker);
         List<RecordMetadata> listRecordMetadata=new ArrayList<>();
         for (City city:list) {
             String key=city.getKey();
@@ -32,7 +33,7 @@ public class CityDataProducer {
                     }catch(Exception e){e.printStackTrace();}
                 }
                 System.out.println("Record sent with key " + key + " to partition " + metadata.partition()
-                        + " with offset " + metadata.offset());
+                        + " with offset " + metadata.offset() + " With timestamp " + metadata.timestamp() );
                 listRecordMetadata.add(metadata);
             } catch (ExecutionException e) {
                 System.out.println("Error in sending record");
@@ -52,7 +53,7 @@ public class CityDataProducer {
             ObjectMapper mapper = new ObjectMapper();
             List<City> asList = mapper.readValue(new File("C:\\kafka\\java-examples\\kafka\\kafka-producer-consumer\\src\\main\\resources\\cityTemp.json"), new TypeReference<List<City>>() {
             });
-            System.out.println(asList.size());
+           // System.out.println(asList.size());
             return asList;
         }catch (Exception e){e.printStackTrace();}
         return null;

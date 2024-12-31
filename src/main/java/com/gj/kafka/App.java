@@ -1,5 +1,6 @@
 package com.gj.kafka;
 
+import com.gj.kafka.cert.producers.TestProducer;
 import com.gj.kafka.consumer.BeaconConsumer;
 import com.gj.kafka.consumer.CityDataConsumer;
 import com.gj.kafka.consumer.PopulationConsumer;
@@ -15,7 +16,7 @@ import com.gj.kafka.streams.aggregates.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import freemarker.template.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,9 @@ public class App implements CommandLineRunner {
         if (action.equalsIgnoreCase("producer")) {
             runCityProducer(broker, topic);
         }
+        if (action.equalsIgnoreCase("testproducer")) {
+            TestProducer.produce(broker, topic,TestProducer.loadData());
+        }
         if (action.equalsIgnoreCase("rssiproducer")) {
             runRSSIProducer(broker, topic);
         }
@@ -62,8 +66,12 @@ public class App implements CommandLineRunner {
                 runPolutionConsumer(grpName, broker, topic);
             }
 
-            if (topic != null && topic.equalsIgnoreCase("cityinfo")) {
-                runCityConsumer(grpName, broker, topic);
+            if (topic != null && (topic.equalsIgnoreCase("cityinfo") || topic.equalsIgnoreCase("cityinfo1"))) {
+              //  runCityConsumer(grpName, broker, topic);
+                //CityDataConsumer.seekDataUsingStartOffset(grpName, broker, topic,210L,0);
+                //seekDataUsingStartTimeStamp
+
+                CityDataConsumer.seekDataUsingStartTimeStamp(grpName, broker, topic,1730779776164L,0);
             }
 
             if (topic != null && topic.equalsIgnoreCase("rssi")) {
@@ -106,6 +114,9 @@ public class App implements CommandLineRunner {
         if (action.equalsIgnoreCase("rssistream")) {
             RSSIStream.rssiOrdered();
         }
+        if (action.equalsIgnoreCase("cityFilteringStream")) {
+            FilteringSteam.filterByCityName(broker,topic,"Chicago");
+        }
     }
     public static String[] beacons=new String[]{"B1","B2","B3","B4","B5"};
     public static String[] hubs=new String[]{"H1","H2","H3"};
@@ -141,7 +152,7 @@ public class App implements CommandLineRunner {
         //  list.addAll(list);
         // list.addAll(list);
         System.out.println("List size: " + list.size());
-
+        System.out.println("Topic name: " + topic);
         list.stream().forEach(city -> {
                     System.out.println("City Name :" + city.getCity() + " Message Order: " + city.getRanking() + "Temp :" + city.getTemp());
                 }
@@ -151,9 +162,9 @@ public class App implements CommandLineRunner {
 
     static void runCityConsumer(String grpName, String broker, String topic) {
         List<City> list = CityDataConsumer.consumeData(grpName, broker, topic);
-        list.stream().forEach(record -> {
+       /* list.stream().forEach(record -> {
             System.out.println("Key :" + record.getKey() + " Value :" + record.toString());
-        });
+        });*/
 
     }
 
