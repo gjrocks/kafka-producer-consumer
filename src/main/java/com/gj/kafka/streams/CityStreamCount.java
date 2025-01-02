@@ -7,6 +7,9 @@ import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.kstream.*;
+import org.apache.kafka.streams.state.KeyValueStore;
+import org.apache.kafka.streams.state.StoreBuilder;
+import org.apache.kafka.streams.state.Stores;
 
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
@@ -23,9 +26,14 @@ public class CityStreamCount {
                 "city",
                 Consumed.with(stringSerde, CustomSerdesFactory.citySerde())
         );
-        //views.print(Printed.toSysOut());
-        System.out.println("Views: " + views);
 
+        StoreBuilder<KeyValueStore<String, City>> indexStore = Stores.keyValueStoreBuilder(
+                        Stores.persistentKeyValueStore("Data"), Serdes.String(), CustomSerdesFactory.citySerde());
+                //.withLoggingEnabled(changelogConfig);
+        //views.print(Printed.toSysOut());
+        builder.addStateStore(indexStore);
+        System.out.println("Views: " + views);
+      //  views.transformValues()
         final KTable<String, Long> counts = views.map((key, value) -> {
                     System.out.println("Got here :" + key);
                     return new KeyValue<String, String>(value.getStateId(), value.getCity());

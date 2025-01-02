@@ -137,6 +137,12 @@
 			<version>8.9.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20240303</version>
+		</dependency>
 
 		<!-- The newrelic-api.jar dependency. -->
 		<dependency>

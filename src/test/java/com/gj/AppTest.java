@@ -2,7 +2,9 @@ package com.gj;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gj.kafka.App;
 import com.gj.kafka.constants.IKafkaConstants;
+import com.gj.kafka.devices.DataUtils;
 import com.gj.kafka.serializer.CitySerializer;
 import freemarker.template.*;
 import org.apache.kafka.clients.CommonClientConfigs;
@@ -15,12 +17,14 @@ import org.apache.kafka.common.resource.PatternType;
 import org.apache.kafka.common.resource.ResourcePattern;
 import org.apache.kafka.common.resource.ResourceType;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.*;
 import java.util.*;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 /**
@@ -56,7 +60,7 @@ public class AppTest
         return calendar.getTime().getTime();
     }
 
-    @Test
+    //@Test
     public void testFTL() throws Exception {
 
 
@@ -227,5 +231,123 @@ cycleTimeEvents.stream().forEach(System.out::println);
       String newName=  city.replaceAll(" ","_").toLowerCase();
         System.out.println(newName);
 
+    }
+
+
+public void deriveCycleTime(List<String> events) throws Exception{
+    Map<String,JsonNode> externalContext=new HashMap<>();
+    List<CycleTimeEvent> cycleTimeEvents=new ArrayList<>();
+    events.stream().forEach(event->{
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            JsonNode map = mapper.readValue(event, JsonNode.class);
+            if(map!=null && map.get("tags").has("ProgramName")){
+                //System.out.println(map);
+                String deviceName=map.get("deviceName").asText();
+                if(externalContext.get(deviceName)!=null){
+                    CycleTimeEvent cycleTimeEvent=new CycleTimeEvent();
+                    JsonNode existingNode=externalContext.get(deviceName);
+                    cycleTimeEvent.setDeviceName(deviceName);
+
+                    JsonNode existingTags=existingNode.get("tags").get("ProgramName");
+                    JsonNode existingProgramName=existingTags.get("tagValue");
+                    JsonNode existingTime=existingTags.get("timestamp");
+                    cycleTimeEvent.setPreviousProgramStartTime(existingTime.asLong());
+                    cycleTimeEvent.setPreviousProgramName(existingProgramName.asText());
+                    cycleTimeEvent.setCurrentProgramStartTime(map.get("tags").get("ProgramName").get("timestamp").asLong());
+                    cycleTimeEvent.setProgramName(map.get("tags").get("ProgramName").get("tagValue").asText());
+                    cycleTimeEvent.setCurrentProgramName(map.get("tags").get("ProgramName").get("tagValue").asText());
+                    cycleTimeEvent.setCycleTime((cycleTimeEvent.getCurrentProgramStartTime()-cycleTimeEvent.getPreviousProgramStartTime())/(1000));
+                    cycleTimeEvents.add(cycleTimeEvent);
+
+                    externalContext.put(deviceName,map); //setting up new raw event as previous event
+                }else {
+                    externalContext.put(deviceName, map);
+                }
+            }
+            //System.out.println(map);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    });
+    cycleTimeEvents.stream().forEach(System.out::println);
+}
+
+//@Test
+    public void generateDeviceData() throws Exception{
+        Configuration cfg = new Configuration();
+        cfg.setClassForTemplateLoading(AppTest.class, "/");
+        cfg.setIncompatibleImprovements(new Version(2, 3, 20));
+        cfg.setDefaultEncoding("UTF-8");
+        cfg.setLocale(Locale.US);
+        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        int count=0;
+        String defaultValue="0.51002";
+        Long timeStamp=1733900434215L;
+        List<String> events=new ArrayList<>();
+        FileWriter file = new FileWriter("c:\\tmp\\devices.json");
+        BufferedWriter bf = new BufferedWriter(file);
+    bf.write("[");
+    bf.newLine();
+        for(int i=0;i<1600;i++) {
+
+            Map<String, Object> input = new HashMap<String, Object>();
+            input.put("deviceName", devices[getRandomNumberUsingInts(0, devices.length)]);
+            if(count==0){
+                input.put("tagName", "ProgramName");
+                input.put("tagValue", "\""+ programNames[getRandomNumberUsingInts(0, programNames.length)]+"\"");
+                count++;
+            }else{
+                input.put("tagName", tags[getRandomNumberUsingInts(0, tags.length)]);
+                input.put("tagValue", defaultValue);
+                count++;
+            }
+
+            input.put("timeStamp", timeStamp+"");
+            Template template = cfg.getTemplate("device.ftl");
+
+//            Writer consoleWriter = new OutputStreamWriter(System.out);
+//            template.process(input, consoleWriter);
+
+            try {
+
+                Writer outWriter = new StringWriter();
+                template.process(input, outWriter);
+                String event=outWriter.toString();
+                bf.write(event);
+                bf.write(",");
+                bf.newLine();
+                //System.out.println(event);
+                events.add(event);
+
+            } catch (IOException | TemplateException e) {
+                throw new RuntimeException(e);
+            }
+            if(count>=10){
+                count=0;
+            }
+            timeStamp= something(timeStamp,getRandomNumberUsingInts(5,27));
+        }
+    bf.write("]");
+        bf.close();
+        // For the sake of example, also write output into a file:
+//        Writer fileWriter = new FileWriter(new File("output.html"));
+//        try {
+//            template.process(input, fileWriter);
+//        } finally {
+//            fileWriter.close();
+//        }
+
+
+    }
+
+    //@Test
+
+
+    @Test
+    public void cycleTimeTest() throws Exception{
+        List<String> events= DataUtils.readDeviceJsonData();
+        deriveCycleTime(events);
     }
 }

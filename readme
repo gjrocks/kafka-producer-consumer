@@ -145,3 +145,8 @@ java -Daction=producer -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\k
 java -Daction=cityFilteringStream -DGroupName=beacons1  -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -Daction=consumer -DGroupName=cityconsumer -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -Daction=devicesproducer -Dbroker=localhost:9092 -Dtopic=devices -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+java -Daction=deviceStream -DGroupName=deviceStream1  -Dbroker=localhost:9092 -Dtopic=devices -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar

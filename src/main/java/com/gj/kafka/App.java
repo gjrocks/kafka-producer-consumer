@@ -5,6 +5,8 @@ import com.gj.kafka.consumer.BeaconConsumer;
 import com.gj.kafka.consumer.CityDataConsumer;
 import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.consumer.RSSIDataConsumer;
+import com.gj.kafka.devices.DeviceStreamProcessor;
+import com.gj.kafka.devices.DevicesProducer;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.model.RSSI;
@@ -47,6 +49,9 @@ public class App implements CommandLineRunner {
         }
         if (action.equalsIgnoreCase("rssiproducer")) {
             runRSSIProducer(broker, topic);
+        }
+        if (action.equalsIgnoreCase("devicesproducer")) {
+            DevicesProducer.runProducer(broker, topic);
         }
         if (action.equalsIgnoreCase("beaconproducer")) {
             BeaconProducer.produceBeaconData(broker, topic);
@@ -116,6 +121,9 @@ public class App implements CommandLineRunner {
         }
         if (action.equalsIgnoreCase("cityFilteringStream")) {
             FilteringSteam.filterByCityName(broker,topic,"Chicago");
+        }
+        if (action.equalsIgnoreCase("deviceStream")) {
+            DeviceStreamProcessor.topologyStream();
         }
     }
     public static String[] beacons=new String[]{"B1","B2","B3","B4","B5"};
