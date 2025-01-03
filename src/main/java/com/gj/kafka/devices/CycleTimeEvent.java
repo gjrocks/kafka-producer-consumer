@@ -1,4 +1,4 @@
-package com.gj;
+package com.gj.kafka.devices;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

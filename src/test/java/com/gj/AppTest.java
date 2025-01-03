@@ -2,29 +2,22 @@ package com.gj;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gj.kafka.App;
 import com.gj.kafka.constants.IKafkaConstants;
+import com.gj.kafka.devices.CycleTimeEvent;
 import com.gj.kafka.devices.DataUtils;
 import com.gj.kafka.serializer.CitySerializer;
 import freemarker.template.*;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.CreateAclsResult;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.common.acl.*;
 import org.apache.kafka.common.config.SaslConfigs;
-import org.apache.kafka.common.resource.PatternType;
-import org.apache.kafka.common.resource.ResourcePattern;
-import org.apache.kafka.common.resource.ResourceType;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.json.JSONObject;
 import org.junit.Test;
 
 import java.io.*;
 import java.util.*;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 /**
