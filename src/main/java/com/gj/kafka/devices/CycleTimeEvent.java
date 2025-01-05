@@ -29,8 +29,18 @@ public class CycleTimeEvent {
     private Long currentProgramStartTime;
     @JsonProperty("cycleTime")
     private Long cycleTime;
+     @JsonProperty("forwaded")
+    private String forwaded;
 
+    @JsonProperty("forwaded")
+    public String getForwaded() {
+        return forwaded;
+    }
 
+    @JsonProperty("forwaded")
+    public void setForwaded(String forwaded) {
+        this.forwaded = forwaded;
+    }
 
     public CycleTimeEvent() {
     }

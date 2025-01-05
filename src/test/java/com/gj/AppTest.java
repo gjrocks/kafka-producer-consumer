@@ -235,7 +235,7 @@ public void deriveCycleTime(List<String> events) throws Exception{
         try {
             JsonNode map = mapper.readValue(event, JsonNode.class);
             if(map!=null && map.get("tags").has("ProgramName")){
-                //System.out.println(map);
+               // System.out.println(map);
                 String deviceName=map.get("deviceName").asText();
                 if(externalContext.get(deviceName)!=null){
                     CycleTimeEvent cycleTimeEvent=new CycleTimeEvent();

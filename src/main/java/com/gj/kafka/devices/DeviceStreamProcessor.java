@@ -107,16 +107,23 @@ public class DeviceStreamProcessor {
                         Stores.persistentKeyValueStore("device-store"),
                         Serdes.String(),
                         Serdes.String());
+        StoreBuilder<KeyValueStore<String, String>> cycleTimeStoreBuilder =
+                Stores.keyValueStoreBuilder(
+                        Stores.persistentKeyValueStore("cycle-store"),
+                        Serdes.String(),
+                        Serdes.String());
         //topologyBuilder
         //topologyBuilder.
         topologyBuilder.addSource("Source", "devices")
                 .addProcessor("Process", DeviceProcessor::new, "Source")
                 .addStateStore(deviceStoreBuilder, "Process")
+                .addStateStore(cycleTimeStoreBuilder, "Process")
+
                // .connectProcessorAndStateStores("Process", "device-store")
-                .addSink("Sink", "devices-output", "Process");
+                .addSink("Sink", "devices-output1", "Process");
 
         final Properties props = new Properties();
-        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "streams-devices-1");
+        props.putIfAbsent(StreamsConfig.APPLICATION_ID_CONFIG, "streams-devices-12");
         props.putIfAbsent(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, IKafkaConstants.KAFKA_BROKERS_ALL);
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());

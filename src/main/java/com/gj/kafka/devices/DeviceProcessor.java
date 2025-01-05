@@ -12,39 +12,55 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class DeviceProcessor implements Processor<String,String,String,String> {
+    public class DeviceProcessor implements Processor<String,String,String,String> {
     private KeyValueStore<String, String> kvStore;
-
+    private KeyValueStore<String, String> cycleStore;
+    int count=0;
     @Override
     public void init(ProcessorContext<String, String> context) {
         //Processor.super.init(context);
 
         context.schedule(Duration.ofSeconds(1), PunctuationType.STREAM_TIME, timestamp -> {
-            try (final KeyValueIterator<String, String> iter = kvStore.all()) {
+           // cycleStore.
+            try (final KeyValueIterator<String, String> iter = cycleStore.all()) {
                 while (iter.hasNext()) {
+                    count++;
                     final KeyValue<String, String> entry = iter.next();
-                    context.forward(new Record<>(entry.key, entry.value.toString(), timestamp));
+                    try{
+                        ObjectMapper mapper = new ObjectMapper();
+                        CycleTimeEvent existingNode=mapper.readValue(entry.value.toString(), CycleTimeEvent.class);
+                        if(existingNode.getForwaded()==null || existingNode.getForwaded().equalsIgnoreCase("no")) {
+                            context.forward(new Record<>(entry.key, entry.value.toString(), timestamp));
+                            existingNode.setForwaded("yes");
+                            cycleStore.put(entry.key, mapper.writeValueAsString(existingNode));
+                            System.out.println("Count :" + count);
+                        }
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
                 }
             }
         });
         kvStore = context.getStateStore("device-store");
+        cycleStore=context.getStateStore("cycle-store");
     }
 
     @Override
     public void process(Record<String, String> record) {
-        System.out.println("Key :" +record.key() + " Value :" + record.value());
-        kvStore.put(record.key(), record.value());
+
+        //kvStore.put(record.key(), record.value());
 
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode map = mapper.readValue(record.value(), JsonNode.class);
             if(map!=null && map.get("tags").has("ProgramName")){
-
+                System.out.println("Key :" +record.key() + " Value :" + record.value());
                 String deviceName=map.get("deviceName").asText();
                 if(kvStore.get(deviceName)!=null){
                     CycleTimeEvent cycleTimeEvent=new CycleTimeEvent();
@@ -62,10 +78,18 @@ public class DeviceProcessor implements Processor<String,String,String,String> {
                     cycleTimeEvent.setCurrentProgramName(map.get("tags").get("ProgramName").get("tagValue").asText());
                     cycleTimeEvent.setCycleTime((cycleTimeEvent.getCurrentProgramStartTime()-cycleTimeEvent.getPreviousProgramStartTime())/(1000));
                    // cycleTimeEvents.add(cycleTimeEvent);
+                    String keyy=deviceName+UUID.randomUUID();
+                    if(cycleStore.get(keyy)!=null){
+                        System.out.println(" we have collision");
+
+                    }
+                     System.out.println("Keyy :" +keyy);
+                     cycleStore.put(keyy,mapper.writeValueAsString(cycleTimeEvent));
 
                     kvStore.put(deviceName,record.value()); //setting up new raw event as previous event
                 }else {
                     kvStore.put(deviceName, record.value());
+                    //cycleStore.put(deviceName,mapper.writeValueAsString(cycleTimeEvent));
                 }
             }
             //System.out.println(map);

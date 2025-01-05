@@ -19,10 +19,11 @@ import java.util.concurrent.ExecutionException;
 
 public class DevicesProducer {
 
-    static int delay=1000;
+    static int delay=0;
     public static void runProducer(String broker, String topic) throws Exception{
 
     List<String> events=DataUtils.readDeviceJsonData();
+        System.out.println("Size  Of events :" + events.size());
     produce(broker,topic,events);
     }
 
