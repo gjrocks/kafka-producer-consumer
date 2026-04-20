@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" packagingData="false">
+    <!-- App/service metadata and tunables -->
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="schedule-service"/>
+    <springProperty scope="context" name="rootLevel" source="logging.level.root" defaultValue="${app.logging.level.root}"/>
+    <springProperty scope="context" name="mdoLevel" source="logging.level.com.deere.mdo" defaultValue="DEBUG"/>
+    <springProperty scope="context" name="profile" source="spring.profiles.active" defaultValue="default"/>
+
+    <!-- Async queue sizing and backpressure-friendly discarding (avoid blocking app threads) -->
+    <property name="LOG_QUEUE_SIZE" value="8192"/>
+    <property name="ASYNC_DISCARDING_THRESHOLD" value="20"/>
+
+    <!-- JSON console output for k8s (stdout), with fields friendly to New Relic log correlation -->
+    <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <immediateFlush>true</immediateFlush>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <!-- ISO timestamp in UTC -->
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+
+                <!-- Common structured fields -->
+                <pattern>
+                    <pattern>
+                        {
+                        "level": "%level",
+                        "logger": "%logger{36}",
+                        "thread": "%thread"
+                        }
+                    </pattern>
+                </pattern>
+
+                <!-- Include entire MDC so NR agent-provided linking metadata (entity.* etc) is forwarded -->
+                <mdc/>
+
+                <!-- Message and args -->
+                <message/>
+                <arguments/>
+
+                <!-- Stack traces shortened to keep payloads small yet debuggable -->
+                <stackTrace>
+                    <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                        <maxDepthPerThrowable>30</maxDepthPerThrowable>
+                        <maxLength>20480</maxLength>
+                        <rootCauseFirst>true</rootCauseFirst>
+                        <exclude>java.</exclude>
+                        <exclude>jakarta.</exclude>
+                        <exclude>org.springframework</exclude>
+                    </throwableConverter>
+                </stackTrace>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- Async wrapper prevents logging overhead on hot paths -->
+    <appender name="ASYNC_JSON" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>${LOG_QUEUE_SIZE}</queueSize>
+        <neverBlock>true</neverBlock>
+        <includeCallerData>false</includeCallerData>
+        <discardingThreshold>${ASYNC_DISCARDING_THRESHOLD}</discardingThreshold>
+        <appender-ref ref="JSON_CONSOLE"/>
+    </appender>
+
+    <!-- Reduce some noisy libraries in container logs -->
+    <logger name="com.gj" level="DEBUG" additivity="false">
+        <appender-ref ref="ASYNC_JSON"/>
+    </logger>
+    <logger name="org.apache.kafka.clients.NetworkClient" level="WARN"/>
+    <logger name="org.apache.kafka.clients.Metadata" level="WARN"/>
+    <logger name="org.apache.kafka.common.metrics" level="WARN"/>
+
+    <root level="${rootLevel}">
+        <appender-ref ref="ASYNC_JSON"/>
+    </root>
+</configuration>

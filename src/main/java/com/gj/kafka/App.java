@@ -1,12 +1,18 @@
 package com.gj.kafka;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.gj.kafka.cert.producers.TestProducer;
 import com.gj.kafka.consumer.BeaconConsumer;
 import com.gj.kafka.consumer.CityDataConsumer;
 import com.gj.kafka.consumer.PopulationConsumer;
 import com.gj.kafka.consumer.RSSIDataConsumer;
+import com.gj.kafka.devices.CycleProducer;
+import com.gj.kafka.devices.CycleStreamProcessor;
 import com.gj.kafka.devices.DeviceStreamProcessor;
 import com.gj.kafka.devices.DevicesProducer;
+import com.gj.kafka.employees.EmployeeProducer;
+import com.gj.kafka.employees.EmployeeStreamFactory;
+import com.gj.kafka.employees.EmployeeStreamProcessor;
 import com.gj.kafka.model.City;
 import com.gj.kafka.model.CityAggregation;
 import com.gj.kafka.model.RSSI;
@@ -15,15 +21,21 @@ import com.gj.kafka.producer.CityDataProducer;
 import com.gj.kafka.producer.RSSIProducer;
 import com.gj.kafka.streams.MovieStream;
 import com.gj.kafka.streams.aggregates.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import freemarker.template.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @SpringBootApplication
 public class App implements CommandLineRunner {
+
+    @Autowired
+    EmployeeStreamFactory employeeStreamFactory;
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
@@ -41,6 +53,20 @@ public class App implements CommandLineRunner {
             System.out.println("Please provide the action possible values are producer/consumer, returning without any processing");
             return;
         }
+        if (action.equalsIgnoreCase("employeeproducer")) {
+            EmployeeProducer.produce(broker, topic);
+        }
+
+        if (action.equalsIgnoreCase("employeeStream")) {
+            logger.debug("Stream starting");
+            //EmployeeStreamProcessor.topologyStream();
+            employeeStreamFactory.startEmployeeStream(topic);
+            logger.debug("Stream Ending");
+        }
+        if (action.equalsIgnoreCase("cycleproducer")) {
+            runCycleProducer(broker, topic);
+        }
+
         if (action.equalsIgnoreCase("producer")) {
             runCityProducer(broker, topic);
         }
@@ -125,6 +151,9 @@ public class App implements CommandLineRunner {
         if (action.equalsIgnoreCase("deviceStream")) {
             DeviceStreamProcessor.topologyStream();
         }
+        if (action.equalsIgnoreCase("cycleStream")) {
+            CycleStreamProcessor.topologyStream();
+        }
     }
     public static String[] beacons=new String[]{"B1","B2","B3","B4","B5"};
     public static String[] hubs=new String[]{"H1","H2","H3"};
@@ -151,6 +180,18 @@ public class App implements CommandLineRunner {
                 }
         );*/
         RSSIProducer.produce(broker, topic, list);
+    }
+
+    static void runCycleProducer(String broker, String topic) {
+        List<JsonNode> list = CycleProducer.loadCycleData();
+
+        // list.addAll(list);
+        //  list.addAll(list);
+        // list.addAll(list);
+        System.out.println("List size: " + list.size());
+        System.out.println("Topic name: " + topic);
+       // list.forEach(System.out::println);
+        CycleProducer.produce(broker, topic, list);
     }
 
     static void runCityProducer(String broker, String topic) {

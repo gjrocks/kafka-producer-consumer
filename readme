@@ -8,6 +8,7 @@ kafka-console-consumer --topic cityinfo --from-beginning --bootstrap-server loca
 
 set KAFKA_OPTS=-Djava.security.auth.login.config=C:/kafka_2.13-3.3.1/config/jaas-kafka-server.conf
 
+java -Daction=producer -Dbroker=localhost:9095 -Dtopic=citys3 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=citys3 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 java -Daction=producer -Dbroker=localhost:9092,localhost:9093 -Dtopic=city -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
@@ -146,7 +147,18 @@ java -Daction=cityFilteringStream -DGroupName=beacons1  -Dbroker=localhost:9092 
 
 java -Daction=consumer -DGroupName=cityconsumer -Dbroker=localhost:9092 -Dtopic=cityinfo1 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
-java -Daction=devicesproducer -Dbroker=localhost:9092 -Dtopic=devices -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=cycleproducer -Dbroker=localhost:9095 -Dtopic=devices-9 -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
 
 
-java -Daction=deviceStream -DGroupName=deviceStream1  -Dbroker=localhost:9092 -Dtopic=devices -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -Daction=cycleStream -DGroupName=deviceStream15  -Dbroker=localhost:9095 -Dtopic=devices -jar .\target\kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+java -Daction=employeeproducer -Dbroker=localhost:9095 -Dtopic=emp1 -jar ./target/kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+
+java -Daction=employeeStream -DGroupName=employeeStream-1  -Dbroker=localhost:9095 -Dtopic=emp   -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=\*:5005 -jar ./target/kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005
+
+
+java -javaagent:/Users/cqktss0/Documents/newrelic/newrelic.jar -Daction=employeeStream -DGroupName=employeeStream-1  -Dbroker=localhost:9095 -Dtopic=Bangalore,Pune -jar ./target/kafka-producer-consumer-0.0.1-SNAPSHOT.jar
+java -javaagent:/Users/cqktss0/Documents/newrelic/newrelic.jar -jar your-app.jar

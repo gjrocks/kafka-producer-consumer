@@ -51,11 +51,14 @@ public class CityDataProducer {
 
         try {
             ObjectMapper mapper = new ObjectMapper();
-            List<City> asList = mapper.readValue(new File("C:\\kafka\\java-examples\\kafka\\kafka-producer-consumer\\src\\main\\resources\\cityTemp.json"), new TypeReference<List<City>>() {
+            List<City> asList = mapper.readValue(new File("/Users/cqktss0/Desktop/codeBase/kafka-work/kafka-producer-consumer/src/main/resources/cityTemp.json"), new TypeReference<List<City>>() {
             });
            // System.out.println(asList.size());
             return asList;
         }catch (Exception e){e.printStackTrace();}
         return null;
     }
+
+
+
 }

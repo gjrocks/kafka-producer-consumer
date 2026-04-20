@@ -1,0 +1,1684 @@
+[
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751868468560,
+        "dataType": "string",
+        "value": "Program4",
+        "timeString": "Mon Jul 07 11:37:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751868768560,
+        "dataType": "Int32",
+        "value": "1",
+        "timeString": "Mon Jul 07 11:42:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751868828560,
+        "dataType": "Int32",
+        "value": "2",
+        "timeString": "Mon Jul 07 11:43:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751869188560,
+        "dataType": "Int32",
+        "value": "3",
+        "timeString": "Mon Jul 07 11:49:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751869428560,
+        "dataType": "Int32",
+        "value": "4",
+        "timeString": "Mon Jul 07 11:53:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751869548560,
+        "dataType": "Int32",
+        "value": "5",
+        "timeString": "Mon Jul 07 11:55:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751869788560,
+        "dataType": "Int32",
+        "value": "6",
+        "timeString": "Mon Jul 07 11:59:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751870208560,
+        "dataType": "string",
+        "value": "Program3",
+        "timeString": "Mon Jul 07 12:06:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751869908560,
+        "dataType": "Int32",
+        "value": "7",
+        "timeString": "Mon Jul 07 12:01:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751870208560,
+        "dataType": "Int32",
+        "value": "8",
+        "timeString": "Mon Jul 07 12:06:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751870328560,
+        "dataType": "Int32",
+        "value": "8",
+        "timeString": "Mon Jul 07 12:08:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751870568560,
+        "dataType": "Int32",
+        "value": "9",
+        "timeString": "Mon Jul 07 12:12:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751870928560,
+        "dataType": "Int32",
+        "value": "10",
+        "timeString": "Mon Jul 07 12:18:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871168560,
+        "dataType": "Int32",
+        "value": "11",
+        "timeString": "Mon Jul 07 12:22:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751871708560,
+        "dataType": "string",
+        "value": "Program1",
+        "timeString": "Mon Jul 07 12:31:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871408560,
+        "dataType": "Int32",
+        "value": "12",
+        "timeString": "Mon Jul 07 12:26:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871648560,
+        "dataType": "Int32",
+        "value": "12",
+        "timeString": "Mon Jul 07 12:30:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871708560,
+        "dataType": "Int32",
+        "value": "13",
+        "timeString": "Mon Jul 07 12:31:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871888560,
+        "dataType": "Int32",
+        "value": "14",
+        "timeString": "Mon Jul 07 12:34:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751871948560,
+        "dataType": "Int32",
+        "value": "15",
+        "timeString": "Mon Jul 07 12:35:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751872068560,
+        "dataType": "Int32",
+        "value": "16",
+        "timeString": "Mon Jul 07 12:37:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751872728560,
+        "dataType": "string",
+        "value": "Program4",
+        "timeString": "Mon Jul 07 12:48:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751872428560,
+        "dataType": "Int32",
+        "value": "17",
+        "timeString": "Mon Jul 07 12:43:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751872488560,
+        "dataType": "Int32",
+        "value": "18",
+        "timeString": "Mon Jul 07 12:44:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751872728560,
+        "dataType": "Int32",
+        "value": "19",
+        "timeString": "Mon Jul 07 12:48:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751872968560,
+        "dataType": "Int32",
+        "value": "20",
+        "timeString": "Mon Jul 07 12:52:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751873208560,
+        "dataType": "Int32",
+        "value": "21",
+        "timeString": "Mon Jul 07 12:56:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751873568560,
+        "dataType": "Int32",
+        "value": "22",
+        "timeString": "Mon Jul 07 13:02:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751874048560,
+        "dataType": "string",
+        "value": "Program4",
+        "timeString": "Mon Jul 07 13:10:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751873748560,
+        "dataType": "Int32",
+        "value": "23",
+        "timeString": "Mon Jul 07 13:05:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751873988560,
+        "dataType": "Int32",
+        "value": "24",
+        "timeString": "Mon Jul 07 13:09:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751874048560,
+        "dataType": "Int32",
+        "value": "25",
+        "timeString": "Mon Jul 07 13:10:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751874348560,
+        "dataType": "Int32",
+        "value": "26",
+        "timeString": "Mon Jul 07 13:15:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751874468560,
+        "dataType": "Int32",
+        "value": "27",
+        "timeString": "Mon Jul 07 13:17:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751874708560,
+        "dataType": "Int32",
+        "value": "28",
+        "timeString": "Mon Jul 07 13:21:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751875368560,
+        "dataType": "string",
+        "value": "Program5",
+        "timeString": "Mon Jul 07 13:32:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751875068560,
+        "dataType": "Int32",
+        "value": "29",
+        "timeString": "Mon Jul 07 13:27:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751875128560,
+        "dataType": "Int32",
+        "value": "30",
+        "timeString": "Mon Jul 07 13:28:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751875428560,
+        "dataType": "Int32",
+        "value": "31",
+        "timeString": "Mon Jul 07 13:33:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751875548560,
+        "dataType": "Int32",
+        "value": "32",
+        "timeString": "Mon Jul 07 13:35:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751875908560,
+        "dataType": "Int32",
+        "value": "33",
+        "timeString": "Mon Jul 07 13:41:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751876088560,
+        "dataType": "Int32",
+        "value": "34",
+        "timeString": "Mon Jul 07 13:44:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751876628560,
+        "dataType": "string",
+        "value": "Program5",
+        "timeString": "Mon Jul 07 13:53:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751876328560,
+        "dataType": "Int32",
+        "value": "35",
+        "timeString": "Mon Jul 07 13:48:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751876508560,
+        "dataType": "Int32",
+        "value": "36",
+        "timeString": "Mon Jul 07 13:51:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751876568560,
+        "dataType": "Int32",
+        "value": "37",
+        "timeString": "Mon Jul 07 13:52:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751876928560,
+        "dataType": "Int32",
+        "value": "38",
+        "timeString": "Mon Jul 07 13:58:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877168560,
+        "dataType": "Int32",
+        "value": "39",
+        "timeString": "Mon Jul 07 14:02:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877228560,
+        "dataType": "Int32",
+        "value": "40",
+        "timeString": "Mon Jul 07 14:03:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartNumberOp",
+        "timestamp": 1751877828560,
+        "dataType": "string",
+        "value": "Program2",
+        "timeString": "Mon Jul 07 14:13:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877528560,
+        "dataType": "Int32",
+        "value": "41",
+        "timeString": "Mon Jul 07 14:08:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877588560,
+        "dataType": "Int32",
+        "value": "42",
+        "timeString": "Mon Jul 07 14:09:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877708560,
+        "dataType": "Int32",
+        "value": "43",
+        "timeString": "Mon Jul 07 14:11:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751877948560,
+        "dataType": "Int32",
+        "value": "44",
+        "timeString": "Mon Jul 07 14:15:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751878248560,
+        "dataType": "Int32",
+        "value": "45",
+        "timeString": "Mon Jul 07 14:20:48 IST 2025"
+      }
+    ]
+  },
+  {
+    "deviceName": "LX30935",
+    "directoryPath": "LX30935",
+    "deviceSchemaVersion": 1,
+    "unsReference": "unitcode/area/department/station",
+    "tagData": [
+      {
+        "tagName": "HellerStandard/PartCounterTotal",
+        "timestamp": 1751878488560,
+        "dataType": "Int32",
+        "value": "46",
+        "timeString": "Mon Jul 07 14:24:48 IST 2025"
+      }
+    ]
+  },
+
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751879808560,
+          "dataType": "string",
+          "value": "Program2",
+          "timeString": "Mon Jul 07 14:46:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751879988560,
+          "dataType": "Int32",
+          "value": "53",
+          "timeString": "Mon Jul 07 14:49:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751880108560,
+          "dataType": "Int32",
+          "value": "54",
+          "timeString": "Mon Jul 07 14:51:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751880348560,
+          "dataType": "Int32",
+          "value": "55",
+          "timeString": "Mon Jul 07 14:55:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751880408560,
+          "dataType": "Int32",
+          "value": "56",
+          "timeString": "Mon Jul 07 14:56:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751880648560,
+          "dataType": "Int32",
+          "value": "57",
+          "timeString": "Mon Jul 07 15:00:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751881008560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 15:06:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751881548560,
+          "dataType": "string",
+          "value": "Program1",
+          "timeString": "Mon Jul 07 15:15:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751881728560,
+          "dataType": "Int32",
+          "value": "54",
+          "timeString": "Mon Jul 07 15:18:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751881848560,
+          "dataType": "Int32",
+          "value": "55",
+          "timeString": "Mon Jul 07 15:20:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751881908560,
+          "dataType": "Int32",
+          "value": "55",
+          "timeString": "Mon Jul 07 15:21:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751882268560,
+          "dataType": "Int32",
+          "value": "56",
+          "timeString": "Mon Jul 07 15:27:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751882388560,
+          "dataType": "Int32",
+          "value": "57",
+          "timeString": "Mon Jul 07 15:29:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751882688560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 15:34:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751883048560,
+          "dataType": "string",
+          "value": "Program5",
+          "timeString": "Mon Jul 07 15:40:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751883228560,
+          "dataType": "Int32",
+          "value": "55",
+          "timeString": "Mon Jul 07 15:43:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751883408560,
+          "dataType": "Int32",
+          "value": "55",
+          "timeString": "Mon Jul 07 15:46:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751883468560,
+          "dataType": "Int32",
+          "value": "56",
+          "timeString": "Mon Jul 07 15:47:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751883588560,
+          "dataType": "Int32",
+          "value": "57",
+          "timeString": "Mon Jul 07 15:49:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751883828560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 15:53:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751884188560,
+          "dataType": "Int32",
+          "value": "59",
+          "timeString": "Mon Jul 07 15:59:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751884788560,
+          "dataType": "string",
+          "value": "Program5",
+          "timeString": "Mon Jul 07 16:09:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751884968560,
+          "dataType": "Int32",
+          "value": "56",
+          "timeString": "Mon Jul 07 16:12:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751885148560,
+          "dataType": "Int32",
+          "value": "57",
+          "timeString": "Mon Jul 07 16:15:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751885448560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 16:20:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751885508560,
+          "dataType": "Int32",
+          "value": "59",
+          "timeString": "Mon Jul 07 16:21:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751885628560,
+          "dataType": "Int32",
+          "value": "60",
+          "timeString": "Mon Jul 07 16:23:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751885988560,
+          "dataType": "Int32",
+          "value": "61",
+          "timeString": "Mon Jul 07 16:29:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751886408560,
+          "dataType": "string",
+          "value": "Program2",
+          "timeString": "Mon Jul 07 16:36:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751886588560,
+          "dataType": "Int32",
+          "value": "57",
+          "timeString": "Mon Jul 07 16:39:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751886708560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 16:41:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751886828560,
+          "dataType": "Int32",
+          "value": "59",
+          "timeString": "Mon Jul 07 16:43:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751886888560,
+          "dataType": "Int32",
+          "value": "60",
+          "timeString": "Mon Jul 07 16:44:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751887008560,
+          "dataType": "Int32",
+          "value": "61",
+          "timeString": "Mon Jul 07 16:46:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751887248560,
+          "dataType": "Int32",
+          "value": "62",
+          "timeString": "Mon Jul 07 16:50:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751887728560,
+          "dataType": "string",
+          "value": "Program5",
+          "timeString": "Mon Jul 07 16:58:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751887908560,
+          "dataType": "Int32",
+          "value": "58",
+          "timeString": "Mon Jul 07 17:01:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751888208560,
+          "dataType": "Int32",
+          "value": "59",
+          "timeString": "Mon Jul 07 17:06:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751888268560,
+          "dataType": "Int32",
+          "value": "60",
+          "timeString": "Mon Jul 07 17:07:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751888388560,
+          "dataType": "Int32",
+          "value": "61",
+          "timeString": "Mon Jul 07 17:09:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751888508560,
+          "dataType": "Int32",
+          "value": "62",
+          "timeString": "Mon Jul 07 17:11:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751888688560,
+          "dataType": "Int32",
+          "value": "63",
+          "timeString": "Mon Jul 07 17:14:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751889048560,
+          "dataType": "string",
+          "value": "Program3",
+          "timeString": "Mon Jul 07 17:20:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751889228560,
+          "dataType": "Int32",
+          "value": "59",
+          "timeString": "Mon Jul 07 17:23:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751889528560,
+          "dataType": "Int32",
+          "value": "60",
+          "timeString": "Mon Jul 07 17:28:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751889828560,
+          "dataType": "Int32",
+          "value": "61",
+          "timeString": "Mon Jul 07 17:33:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751890008560,
+          "dataType": "Int32",
+          "value": "62",
+          "timeString": "Mon Jul 07 17:36:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751890308560,
+          "dataType": "Int32",
+          "value": "63",
+          "timeString": "Mon Jul 07 17:41:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751890548560,
+          "dataType": "Int32",
+          "value": "64",
+          "timeString": "Mon Jul 07 17:45:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartNumberOp",
+          "timestamp": 1751891208560,
+          "dataType": "string",
+          "value": "Program2",
+          "timeString": "Mon Jul 07 17:56:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751891388560,
+          "dataType": "Int32",
+          "value": "60",
+          "timeString": "Mon Jul 07 17:59:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751891688560,
+          "dataType": "Int32",
+          "value": "61",
+          "timeString": "Mon Jul 07 18:04:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751891988560,
+          "dataType": "Int32",
+          "value": "62",
+          "timeString": "Mon Jul 07 18:09:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751892168560,
+          "dataType": "Int32",
+          "value": "63",
+          "timeString": "Mon Jul 07 18:12:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751892408560,
+          "dataType": "Int32",
+          "value": "64",
+          "timeString": "Mon Jul 07 18:16:48 IST 2025"
+        }
+      ]
+    },
+    {
+      "deviceName": "LX30935",
+      "directoryPath": "LX30935",
+      "deviceSchemaVersion": 1,
+      "unsReference": "unitcode/area/department/station",
+      "tagData": [
+        {
+          "tagName": "HellerStandard/PartCounterTotal",
+          "timestamp": 1751892588560,
+          "dataType": "Int32",
+          "value": "65",
+          "timeString": "Mon Jul 07 18:19:48 IST 2025"
+        }
+      ]
+    }
+
+]

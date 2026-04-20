@@ -1,0 +1,29 @@
+[
+{
+  "deviceName": "LX30935",
+  "directoryPath": "LX30935",
+  "deviceSchemaVersion": 1,
+  "unsReference": "unitcode/area/department/station",
+  "tagData": [
+    {
+      "tagName": "HellerStandard/PartNumberOp",
+      "timestamp": 1751868768560,
+      "dataType": "string",
+      "value": "program1"
+    }
+  ]
+},
+{
+  "deviceName": "LX30935",
+  "directoryPath": "LX30935",
+  "deviceSchemaVersion": 1,
+  "unsReference": "unitcode/area/department/station",
+  "tagData": [
+    {
+      "tagName": "HellerStandard/PartCounterTotal",
+      "timestamp": 1751868768560,
+      "dataType": "Double",
+      "value": "1"
+    }
+  ]
+}]

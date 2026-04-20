@@ -12,6 +12,7 @@ import org.apache.kafka.streams.kstream.Branched;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.processor.api.ProcessorSupplier;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,8 +34,9 @@ public class FilteringSteam {
                 "cityinfo",
                 Consumed.with(stringSerde, CustomSerdesFactory.citySerde())
         );
+       // views.
 
-
+          //views.process(new ProcessorSupplier<String, City, Object, Object>() {          });
         views.filter((key, city) -> city.getId() == 1840020491)
                 .to("1840020491");
         views.filter((key, city) -> city.getId() == 1840000494)
@@ -300,6 +302,7 @@ public class FilteringSteam {
                         Branched.withConsumer(ks -> {
                             System.out.println("Record for the state NY");
                             //ks.to("1840000494");
+
 
                             ks.to((key, city, recordContext) ->{
                                 //write your own logic here to get topic name
